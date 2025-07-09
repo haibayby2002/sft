@@ -1,3 +1,5 @@
+Slide fight tactics
+```
 slide_fight_tactics/
 ├── main.py                        # Entrypoint
 ├── requirements.txt
@@ -47,3 +49,4 @@ slide_fight_tactics/
 │   └── test_docling_extraction.py
 │
 └── README.md
+```
