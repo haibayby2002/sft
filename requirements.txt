@@ -1,0 +1,21 @@
+# Core
+python-dotenv
+requests
+sqlite-utils
+
+# NLP / AI
+transformers
+torch
+sentence-transformers
+
+# PDF processing
+PyMuPDF
+
+# UI
+tk
+
+# Image & OS
+Pillow
+
+# Ollama integration
+ollama
