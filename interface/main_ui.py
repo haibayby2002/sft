@@ -11,6 +11,8 @@ from application.query_controller import load_slides
 import os
 import subprocess
 import platform
+from tkinterdnd2 import DND_FILES, TkinterDnD
+
 
 
 
@@ -18,7 +20,8 @@ import platform
 
 
 def launch_ui():
-    root = tk.Tk()
+    root = TkinterDnD.Tk()
+    # Initialize the main window
     root.title("Slide Fight Tactics")
     root.geometry("1000x700")
     root.minsize(800, 600)
@@ -244,7 +247,46 @@ def launch_ui():
     # === Drag & Drop Frame ===
     dragdrop_frame = tk.LabelFrame(content_area, text="Drag & Drop Section")
     dragdrop_frame.pack(fill="x", padx=10, pady=5)
-    tk.Label(dragdrop_frame, text="(Drag your PDF files here)", fg="gray").pack(pady=10)
+
+    drop_area = tk.Label(
+        dragdrop_frame,
+        text="📥 Drop your PDF files here",
+        fg="gray",
+        bg="#f4f4f4",
+        height=3,
+        relief="groove"
+    )
+    drop_area.pack(fill="x", padx=10, pady=10)
+
+    # Register for drop
+    drop_area.drop_target_register(DND_FILES)
+
+    def handle_pdf_drop(event):
+        deck_id = selected_deck_id["value"]
+        if deck_id is None:
+            messagebox.showwarning("No Deck Selected", "Please select a deck first.")
+            return
+
+        files = root.tk.splitlist(event.data)
+        imported = 0
+        for f in files:
+            if f.lower().endswith(".pdf"):
+                title = os.path.basename(f)
+                try:
+                    insert_slide(deck_id, f, title)
+                    imported += 1
+                except Exception as e:
+                    messagebox.showerror("Error", str(e))
+            else:
+                messagebox.showwarning("Invalid File", f"'{f}' is not a PDF.")
+
+        if imported:
+            messagebox.showinfo("Imported", f"{imported} file(s) imported.")
+            refresh_slides(deck_id)
+
+    drop_area.dnd_bind("<<Drop>>", handle_pdf_drop)
+
+
 
     # === Chat History Frame ===
     chat_frame = tk.LabelFrame(content_area, text="Chat History")
