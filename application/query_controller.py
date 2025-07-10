@@ -1,4 +1,5 @@
 from data.database import get_all_decks
+from data.database import get_slides_by_deck
 
 def load_decks():
     """
@@ -6,3 +7,8 @@ def load_decks():
     Each deck is a sqlite3.Row object with keys: deck_id, name, description, created_at
     """
     return get_all_decks()
+
+
+
+def load_slides(deck_id):
+    return get_slides_by_deck(deck_id)

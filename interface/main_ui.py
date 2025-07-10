@@ -6,6 +6,7 @@ from data.database import insert_deck
 import os
 from tkinter import filedialog
 from data.database import insert_slide
+from application.query_controller import load_slides
 
 
 
@@ -67,15 +68,36 @@ def launch_ui():
     tk.Label(sidebar, text="Decks", font=("Helvetica", 14, "bold")).pack(pady=(10, 2))
 
     def add_deck_popup():
-        name = simpledialog.askstring("New Deck", "Enter deck name:")
-        if not name:
-            return
-        description = simpledialog.askstring("Description", "Optional: enter description:")
-        try:
-            insert_deck(name, description or None)
-            refresh_decks()
-        except Exception as e:
-            messagebox.showerror("Error", str(e))
+        popup = tk.Toplevel(root)
+        popup.title("Create New Deck")
+        popup.geometry("300x220")
+        popup.grab_set()
+
+        tk.Label(popup, text="Deck Name:").pack(pady=(10, 2))
+        name_entry = tk.Entry(popup, width=30)
+        name_entry.pack()
+
+        tk.Label(popup, text="Description:").pack(pady=(10, 2))
+        desc_text = tk.Text(popup, width=30, height=4)
+        desc_text.pack()
+
+        def submit_deck():
+            name = name_entry.get().strip()
+            description = desc_text.get("1.0", tk.END).strip()
+            if not name:
+                messagebox.showwarning("Validation", "Deck name is required.")
+                return
+            try:
+                new_deck_id = insert_deck(name, description or None)
+                popup.destroy()
+                refresh_decks(select_after_id=new_deck_id)
+            except Exception as e:
+                messagebox.showerror("Error", str(e))
+
+        tk.Button(popup, text="Create", command=submit_deck).pack(pady=10)
+
+
+
 
     # Add deck button just under label
     tk.Button(sidebar, text="+ Add Deck", command=add_deck_popup).pack(pady=(0, 10))
@@ -104,18 +126,20 @@ def launch_ui():
 
         # Enable import
         import_btn.config(state="normal")
+        refresh_slides(deck["deck_id"])
 
 
 
 
 
-    def refresh_decks():
+
+    def refresh_decks(select_after_id=None):
         for widget in deck_buttons_frame.winfo_children():
             widget.destroy()
 
         decks = load_decks()
         for deck_row in decks:
-            deck = dict(deck_row)  # Make it mutable
+            deck = dict(deck_row)
             btn = tk.Button(
                 deck_buttons_frame,
                 text=deck["name"],
@@ -126,10 +150,38 @@ def launch_ui():
             btn.config(command=lambda d=deck: select_deck(d))
             btn.pack(pady=2, padx=10, anchor="w")
 
+            # If this is the deck to auto-select
+            if select_after_id is not None and deck["deck_id"] == select_after_id:
+                select_deck(deck)
+
+
+    def refresh_slides(deck_id):
+        for widget in slide_list_frame.winfo_children():
+            widget.destroy()
+
+        slides = load_slides(deck_id)
+        if not slides:
+            tk.Label(slide_list_frame, text="No slides in this deck.").pack(anchor="w", padx=10, pady=5)
+            return
+
+        for slide_row in slides:
+            slide = dict(slide_row)
+            label = tk.Label(
+                slide_list_frame,
+                text=f"📄 {slide['title']}",
+                anchor="w",
+                width=80,
+                padx=10,
+                pady=4,
+                relief="ridge"
+            )
+            label.pack(fill="x", padx=10, pady=3)
+
+
 
     tk.Button(sidebar, text="Toggle Dark Mode", command=toggle_theme).pack(side="bottom", pady=10)
 
-    refresh_decks()  # Load deck list on startup
+    refresh_decks(select_after_id=selected_deck_id["value"])  # Load deck list on startup
 
     # === Slides Frame ===
     slides_frame = tk.LabelFrame(content_area, text="Slide Deck Hub", height=100)
@@ -150,16 +202,19 @@ def launch_ui():
 
         try:
             insert_slide(deck_id, file_path, title)
-            messagebox.showinfo("Success", f"Imported slide:\n{title}")
+            messagebox.showinfo("Success", f"Insert slide {title} to {deck_id} successfully.")
+            refresh_slides(deck_id)  # <-- Add this line to reload UI
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
 
     import_btn = tk.Button(slides_frame, text="Import PDF to Deck", state="disabled", command=lambda: import_pdf())
     import_btn.pack(anchor="w", padx=10, pady=5)
 
+    slide_list_frame = tk.Frame(slides_frame)
+    slide_list_frame.pack(fill="both", expand=True)
 
-    for i in range(7):
-        tk.Label(slides_frame, text=f"[Slide {i+1}]", borderwidth=1, relief="solid", padx=10, pady=5).pack(side="left", padx=5, pady=5)
+
 
     # === Drag & Drop Frame ===
     dragdrop_frame = tk.LabelFrame(content_area, text="Drag & Drop Section")

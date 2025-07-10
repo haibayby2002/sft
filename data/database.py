@@ -15,7 +15,7 @@ def init_db():
     -- Decks
     CREATE TABLE IF NOT EXISTS deck (
         deck_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
+        name TEXT NOT NULL UNIQUE,
         description TEXT,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
@@ -24,7 +24,7 @@ def init_db():
     CREATE TABLE IF NOT EXISTS slide (
         slide_id INTEGER PRIMARY KEY AUTOINCREMENT,
         deck_id INTEGER NOT NULL,
-        file_path TEXT NOT NULL UNIQUE,
+        file_path TEXT NOT NULL,
         title TEXT,
         total_pages INTEGER,
         FOREIGN KEY (deck_id) REFERENCES deck(deck_id)
@@ -65,15 +65,16 @@ def init_db():
 
 def insert_deck(name, description=None):
     conn = get_connection()
-    cur = conn.cursor()
-    cur.execute(
+    cursor = conn.cursor()
+    cursor.execute(
         "INSERT INTO deck (name, description) VALUES (?, ?)",
         (name, description)
     )
+    deck_id = cursor.lastrowid
     conn.commit()
-    deck_id = cur.lastrowid
     conn.close()
     return deck_id
+
 
 def get_all_decks():
     conn = get_connection()
