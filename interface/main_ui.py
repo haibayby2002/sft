@@ -8,6 +8,13 @@ from tkinter import filedialog
 from data.database import insert_slide
 from application.query_controller import load_slides
 
+import os
+import subprocess
+import platform
+
+
+
+
 
 
 def launch_ui():
@@ -56,6 +63,7 @@ def launch_ui():
     def toggle_theme():
         current_theme["value"] = DARK_THEME if current_theme["value"] == LIGHT_THEME else LIGHT_THEME
         apply_theme(current_theme["value"])
+        refresh_decks(select_after_id=selected_deck_id["value"])
 
     # === Layout ===
     sidebar = tk.Frame(root, width=200)
@@ -103,7 +111,7 @@ def launch_ui():
     tk.Button(sidebar, text="+ Add Deck", command=add_deck_popup).pack(pady=(0, 10))
 
     # Deck button container
-    deck_buttons_frame = tk.Frame(sidebar)
+    deck_buttons_frame = tk.Frame(sidebar, bg=current_theme["value"]["bg"])
     deck_buttons_frame.pack(fill="both", expand=True)
 
     def select_deck(deck):
@@ -144,7 +152,11 @@ def launch_ui():
                 deck_buttons_frame,
                 text=deck["name"],
                 anchor="w",
-                width=20
+                width=20,
+                bg=current_theme["value"]["bg"],
+                fg=current_theme["value"]["fg"],
+                activebackground=current_theme["value"]["bg"],
+                activeforeground=current_theme["value"]["fg"]
             )
             deck["button_widget"] = btn
             btn.config(command=lambda d=deck: select_deck(d))
@@ -166,6 +178,16 @@ def launch_ui():
 
         for slide_row in slides:
             slide = dict(slide_row)
+            # label = tk.Label(
+            #     slide_list_frame,
+            #     text=f"📄 {slide['title']}",
+            #     anchor="w",
+            #     width=80,
+            #     padx=10,
+            #     pady=4,
+            #     relief="ridge"
+            # )
+            # label.pack(fill="x", padx=10, pady=3)
             label = tk.Label(
                 slide_list_frame,
                 text=f"📄 {slide['title']}",
@@ -173,9 +195,12 @@ def launch_ui():
                 width=80,
                 padx=10,
                 pady=4,
-                relief="ridge"
+                relief="ridge",
+                cursor="hand2"
             )
+            label.bind("<Button-1>", lambda e, path=slide['file_path']: open_pdf(path))
             label.pack(fill="x", padx=10, pady=3)
+
 
 
 
@@ -249,3 +274,14 @@ def launch_ui():
 
     apply_theme(current_theme["value"])
     root.mainloop()
+
+def open_pdf(file_path):
+    try:
+        if platform.system() == "Windows":
+            os.startfile(file_path)
+        elif platform.system() == "Darwin":  # macOS
+            subprocess.run(["open", file_path])
+        else:  # Linux
+            subprocess.run(["xdg-open", file_path])
+    except Exception as e:
+        messagebox.showerror("Error", f"Could not open file:\n{e}")
