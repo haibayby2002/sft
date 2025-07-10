@@ -3,6 +3,10 @@ from tkinter import ttk, scrolledtext, simpledialog, messagebox
 
 from application.query_controller import load_decks
 from data.database import insert_deck
+import os
+from tkinter import filedialog
+from data.database import insert_slide
+
 
 
 def launch_ui():
@@ -25,6 +29,12 @@ def launch_ui():
         "input_bg": "#3a3a3a"
     }
     current_theme = {"value": LIGHT_THEME}
+    selected_deck_btn = {"widget": None}  # store currently highlighted button
+
+
+    # === Current deck selection ===
+    selected_deck_id = {"value": None}  # use dict to keep reference
+
 
     def apply_theme(theme):
         sidebar.config(bg=theme["bg"])
@@ -74,20 +84,48 @@ def launch_ui():
     deck_buttons_frame = tk.Frame(sidebar)
     deck_buttons_frame.pack(fill="both", expand=True)
 
+    def select_deck(deck):
+        selected_deck_id["value"] = deck["deck_id"]
+
+        # Reset previous button style
+        if selected_deck_btn["widget"]:
+            selected_deck_btn["widget"].config(
+                bg=current_theme["value"]["bg"],
+                fg=current_theme["value"]["fg"]
+            )
+
+        # Highlight selected deck
+        btn = deck["button_widget"]
+        btn.config(
+            bg="#4CAF50",  # green
+            fg="white"
+        )
+        selected_deck_btn["widget"] = btn
+
+        # Enable import
+        import_btn.config(state="normal")
+
+
+
+
+
     def refresh_decks():
         for widget in deck_buttons_frame.winfo_children():
             widget.destroy()
 
         decks = load_decks()
-        for deck in decks:
+        for deck_row in decks:
+            deck = dict(deck_row)  # Make it mutable
             btn = tk.Button(
                 deck_buttons_frame,
                 text=deck["name"],
                 anchor="w",
-                width=20,
-                command=lambda d=deck: print(f"Selected Deck ID: {d['deck_id']}")
+                width=20
             )
+            deck["button_widget"] = btn
+            btn.config(command=lambda d=deck: select_deck(d))
             btn.pack(pady=2, padx=10, anchor="w")
+
 
     tk.Button(sidebar, text="Toggle Dark Mode", command=toggle_theme).pack(side="bottom", pady=10)
 
@@ -96,6 +134,29 @@ def launch_ui():
     # === Slides Frame ===
     slides_frame = tk.LabelFrame(content_area, text="Slide Deck Hub", height=100)
     slides_frame.pack(fill="x", padx=10, pady=10)
+
+    # === Import PDF Function ===
+    def import_pdf():
+        deck_id = selected_deck_id["value"]
+        if deck_id is None:
+            messagebox.showwarning("No Deck Selected", "Please select a deck before importing.")
+            return
+
+        file_path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
+        if not file_path:
+            return
+
+        title = os.path.basename(file_path)
+
+        try:
+            insert_slide(deck_id, file_path, title)
+            messagebox.showinfo("Success", f"Imported slide:\n{title}")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    import_btn = tk.Button(slides_frame, text="Import PDF to Deck", state="disabled", command=lambda: import_pdf())
+    import_btn.pack(anchor="w", padx=10, pady=5)
+
 
     for i in range(7):
         tk.Label(slides_frame, text=f"[Slide {i+1}]", borderwidth=1, relief="solid", padx=10, pady=5).pack(side="left", padx=5, pady=5)
