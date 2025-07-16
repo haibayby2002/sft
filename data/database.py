@@ -76,6 +76,8 @@ def insert_deck(name, description=None):
     return deck_id
 
 
+
+
 def get_all_decks():
     conn = get_connection()
     cur = conn.cursor()
@@ -109,3 +111,37 @@ def get_slides_by_deck(deck_id):
     slides = cur.fetchall()
     conn.close()
     return slides
+
+def delete_deck(deck_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Optional: delete all slides in this deck
+    cursor.execute("DELETE FROM slide WHERE deck_id = ?", (deck_id,))
+
+    # Now delete the deck itself
+    cursor.execute("DELETE FROM deck WHERE deck_id = ?", (deck_id,))
+    
+    conn.commit()
+    conn.close()
+
+def delete_slide(slide_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Step 1: Get all page_ids for the slide
+    cursor.execute("SELECT page_id FROM page WHERE slide_id = ?", (slide_id,))
+    page_ids = [row["page_id"] for row in cursor.fetchall()]
+
+    # Step 2: Delete content for those pages
+    if page_ids:
+        cursor.executemany("DELETE FROM content WHERE page_id = ?", [(pid,) for pid in page_ids])
+
+    # Step 3: Delete pages
+    cursor.execute("DELETE FROM page WHERE slide_id = ?", (slide_id,))
+
+    # Step 4: Delete the slide
+    cursor.execute("DELETE FROM slide WHERE slide_id = ?", (slide_id,))
+
+    conn.commit()
+    conn.close()

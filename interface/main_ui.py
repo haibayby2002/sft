@@ -12,6 +12,8 @@ import os
 import subprocess
 import platform
 from tkinterdnd2 import DND_FILES, TkinterDnD
+from application.query_controller import delete_deck
+from application.query_controller import delete_slide as delete_slide_query
 
 
 
@@ -137,6 +139,7 @@ def launch_ui():
 
         # Enable import
         import_btn.config(state="normal")
+        delete_deck_btn.config(state="normal")
         refresh_slides(deck["deck_id"])
 
 
@@ -169,6 +172,27 @@ def launch_ui():
             if select_after_id is not None and deck["deck_id"] == select_after_id:
                 select_deck(deck)
 
+    # === Confirm Delete Slide Function ===
+    def confirm_delete_slide(slide_id, slide_title):
+        deck_id = selected_deck_id["value"]
+        if deck_id is None:
+            messagebox.showerror("Error", "No deck selected.")
+            return
+
+        decks = load_decks()
+        deck_name = next((d["name"] for d in decks if d["deck_id"] == deck_id), "Unknown Deck")
+
+        confirm = messagebox.askyesno(
+            "Delete Slide",
+            f"Are you sure you want to delete '{slide_title}' from '{deck_name}'?"
+        )
+        if confirm:
+            try:
+                delete_slide_query(slide_id)
+                refresh_slides(deck_id)
+                messagebox.showinfo("Deleted", f"Slide '{slide_title}' has been deleted.")
+            except Exception as e:
+                messagebox.showerror("Error", str(e))
 
     def refresh_slides(deck_id):
         for widget in slide_list_frame.winfo_children():
@@ -181,28 +205,30 @@ def launch_ui():
 
         for slide_row in slides:
             slide = dict(slide_row)
-            # label = tk.Label(
-            #     slide_list_frame,
-            #     text=f"📄 {slide['title']}",
-            #     anchor="w",
-            #     width=80,
-            #     padx=10,
-            #     pady=4,
-            #     relief="ridge"
-            # )
-            # label.pack(fill="x", padx=10, pady=3)
+
+            slide_container = tk.Frame(slide_list_frame)
+            slide_container.pack(fill="x", padx=10, pady=3)
+
             label = tk.Label(
-                slide_list_frame,
+                slide_container,
                 text=f"📄 {slide['title']}",
                 anchor="w",
-                width=80,
+                width=70,
                 padx=10,
                 pady=4,
                 relief="ridge",
                 cursor="hand2"
             )
+            label.pack(side="left", fill="x", expand=True)
+
             label.bind("<Button-1>", lambda e, path=slide['file_path']: open_pdf(path))
-            label.pack(fill="x", padx=10, pady=3)
+
+            # ❌ Delete button
+            def make_delete_handler(slide_id=slide["slide_id"], title=slide["title"]):
+                return lambda: confirm_delete_slide(slide_id, title)
+
+            delete_btn = tk.Button(slide_container, text="❌", fg="red", command=make_delete_handler())
+            delete_btn.pack(side="right", padx=5)
 
 
 
@@ -214,6 +240,10 @@ def launch_ui():
     # === Slides Frame ===
     slides_frame = tk.LabelFrame(content_area, text="Slide Deck Hub", height=100)
     slides_frame.pack(fill="x", padx=10, pady=10)
+
+    # Create a horizontal button frame
+    deck_action_frame = tk.Frame(slides_frame)
+    deck_action_frame.pack(fill="x", padx=10, pady=5)
 
     # === Import PDF Function ===
     def import_pdf():
@@ -236,9 +266,34 @@ def launch_ui():
             messagebox.showerror("Error", str(e))
 
 
-    import_btn = tk.Button(slides_frame, text="Import PDF to Deck", state="disabled", command=lambda: import_pdf())
-    import_btn.pack(anchor="w", padx=10, pady=5)
+    # === Delete Deck Function ===
+    import_btn = tk.Button(deck_action_frame, text="Import PDF to Deck", state="disabled", command=lambda: import_pdf())
+    import_btn.pack(side="left")
 
+    def confirm_delete_deck():
+        deck_id = selected_deck_id["value"]
+        if deck_id is None:
+            messagebox.showwarning("No Deck Selected", "Please select a deck to delete.")
+            return
+
+        confirm = messagebox.askyesno("Confirm Delete", "Are you sure you want to delete this deck and all its slides?")
+        if confirm:
+            try:
+                delete_deck(deck_id)
+                selected_deck_id["value"] = None
+                selected_deck_btn["widget"] = None
+                refresh_decks()
+                refresh_slides(None)
+                import_btn.config(state="disabled")
+                delete_deck_btn.config(state="disabled")
+                messagebox.showinfo("Deleted", "Deck deleted successfully.")
+            except Exception as e:
+                messagebox.showerror("Error", str(e))
+
+    delete_deck_btn = tk.Button(deck_action_frame, text="🗑️ Delete Selected Deck", state="disabled", command=confirm_delete_deck)
+    delete_deck_btn.pack(side="right")
+
+    # === Slide List Frame ===
     slide_list_frame = tk.Frame(slides_frame)
     slide_list_frame.pack(fill="both", expand=True)
 
