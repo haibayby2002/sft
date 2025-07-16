@@ -123,11 +123,21 @@ def launch_ui():
         selected_deck_id["value"] = deck["deck_id"]
 
         # Reset previous button style
-        if selected_deck_btn["widget"]:
-            selected_deck_btn["widget"].config(
-                bg=current_theme["value"]["bg"],
-                fg=current_theme["value"]["fg"]
-            )
+        if selected_deck_btn["widget"] and selected_deck_btn["widget"].winfo_exists():
+            try:
+                selected_deck_btn["widget"].config(
+                    bg=current_theme["value"]["bg"],
+                    fg=current_theme["value"]["fg"]
+                )
+            except tk.TclError:
+                pass  # Widget might already be destroyed
+
+        # # Reset previous button style
+        # if selected_deck_btn["widget"]:
+        #     selected_deck_btn["widget"].config(
+        #         bg=current_theme["value"]["bg"],
+        #         fg=current_theme["value"]["fg"]
+        #     )
 
         # Highlight selected deck
         btn = deck["button_widget"]
@@ -252,18 +262,23 @@ def launch_ui():
             messagebox.showwarning("No Deck Selected", "Please select a deck before importing.")
             return
 
-        file_path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
-        if not file_path:
+        file_paths = filedialog.askopenfilenames(filetypes=[("PDF files", "*.pdf")])
+        if not file_paths:
             return
 
-        title = os.path.basename(file_path)
+        imported = 0
+        for file_path in file_paths:
+            title = os.path.basename(file_path)
+            try:
+                insert_slide(deck_id, file_path, title)
+                # We'll call Docling here later
+                imported += 1
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to import {title}: {str(e)}")
 
-        try:
-            insert_slide(deck_id, file_path, title)
-            messagebox.showinfo("Success", f"Insert slide {title} to {deck_id} successfully.")
-            refresh_slides(deck_id)  # <-- Add this line to reload UI
-        except Exception as e:
-            messagebox.showerror("Error", str(e))
+        if imported:
+            messagebox.showinfo("Success", f"{imported} slide(s) imported to the deck.")
+            refresh_slides(deck_id)
 
 
     # === Delete Deck Function ===
