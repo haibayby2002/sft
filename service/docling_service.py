@@ -1,23 +1,19 @@
-from data.database import get_connection
+from data.database import insert_content, insert_page
 
-def mock_extract_hello_world(slide_id: int, total_pages: int):
-    conn = get_connection()
-    cur = conn.cursor()
-
+def mock_extract_hello_world(slide_id, total_pages):
+    """
+    Simulates extracting content from a PDF by inserting "Hello World" content
+    for each page of the slide into the database.
+    """
     for page_number in range(1, total_pages + 1):
-        cur.execute(
-            "INSERT INTO page (slide_id, page_number) VALUES (?, ?)",
-            (slide_id, page_number)
-        )
-        page_id = cur.lastrowid
+        # Ensure page exists in `page` table
+        insert_page(slide_id, page_number)
 
-        cur.execute(
-            """
-            INSERT INTO content (page_id, content_type, content_text, position_in_page)
-            VALUES (?, ?, ?, ?)
-            """,
-            (page_id, 'text', 'Hello World', 0)
+        # Insert mock "Hello World" content for this page
+        insert_content(
+            slide_id=slide_id,
+            page_number=page_number,
+            content_type="text",
+            content_text="Hello World",
+            position_in_page=0
         )
-
-    conn.commit()
-    conn.close()

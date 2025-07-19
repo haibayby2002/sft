@@ -16,9 +16,11 @@ from application.query_controller import delete_deck
 from application.query_controller import delete_slide as delete_slide_query
 # from service.docling_service import extract_and_store_pdf_content
 from interface.shared_import_logic import shared_import_logic  # adjust path if needed
-
+from PIL import Image, ImageTk
 import threading
-
+from interface.tooltips import Tooltip
+from interface.note_editor import open_note_editor
+from PIL import Image, ImageTk
 
 
 
@@ -30,6 +32,15 @@ def launch_ui():
     root.title("Slide Fight Tactics")
     root.geometry("1000x700")
     root.minsize(800, 600)
+
+    # Load and resize the pencil icon once
+    ICON_PATH = "assets/icons/ChatGPT Image Jul 19, 2025, 03_31_42 PM.png"
+    try:
+        pencil_image_raw = Image.open(ICON_PATH).resize((18, 18), Image.Resampling.LANCZOS)
+        pencil_icon = ImageTk.PhotoImage(pencil_image_raw)
+    except Exception as e:
+        print(f"Failed to load pencil icon: {e}")
+        pencil_icon = None
 
     # === Theme definitions ===
     LIGHT_THEME = {
@@ -218,7 +229,9 @@ def launch_ui():
             except Exception as e:
                 messagebox.showerror("Error", str(e))
 
+    
     def refresh_slides(deck_id):
+        tooltip_refs = []
         for widget in slide_list_frame.winfo_children():
             widget.destroy()
 
@@ -247,13 +260,58 @@ def launch_ui():
 
             label.bind("<Button-1>", lambda e, path=slide['file_path']: open_pdf(path))
 
-            # ❌ Delete button
+            # === Pencil Button ===
+            def make_note_handler(slide_id=slide["slide_id"], title=slide["title"]):
+                return lambda: open_note_editor(slide_id, title)
+
+            pencil_btn = tk.Button(
+                slide_container,
+                image=pencil_icon,
+                command=make_note_handler(),
+                bg=current_theme["value"]["content_bg"],
+                relief="flat",
+                bd=0,
+                activebackground=current_theme["value"]["bg"],
+                cursor="hand2"
+            )
+            pencil_btn.image = pencil_icon
+            pencil_btn.pack(side="left", padx=5)
+
+            # === Delete Button ===
             def make_delete_handler(slide_id=slide["slide_id"], title=slide["title"]):
                 return lambda: confirm_delete_slide(slide_id, title)
 
-            delete_btn = tk.Button(slide_container, text="❌", fg="red", command=make_delete_handler())
+            delete_btn = tk.Button(
+                slide_container,
+                text="❌",
+                fg="red",
+                command=make_delete_handler(),
+                bg=current_theme["value"]["content_bg"],
+                relief="flat",
+                bd=0,
+                activebackground=current_theme["value"]["bg"],
+                cursor="hand2"
+            )
             delete_btn.pack(side="right", padx=5)
 
+            # === Tooltips ===
+            def bind_tooltips(p_btn=pencil_btn, d_btn=delete_btn):
+                Tooltip(p_btn, f"Take notes for {slide['title']}")
+                Tooltip(d_btn, f"Delete {slide['title']}")
+
+            root.after_idle(bind_tooltips)
+
+
+            # === Hover effects ===
+            def hover_on(btn):
+                btn.config(bg="#ffffcc" if current_theme["value"] == LIGHT_THEME else "#555533")
+
+            def hover_off(btn):
+                btn.config(bg=current_theme["value"]["content_bg"])
+
+            for btn in [pencil_btn, delete_btn]:
+                btn.bind("<Enter>", lambda e, b=btn: hover_on(b))
+                btn.bind("<Leave>", lambda e, b=btn: hover_off(b))
 
 
 
