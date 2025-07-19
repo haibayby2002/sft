@@ -1,3 +1,12 @@
+import platform
+import subprocess
+import os
+from tkinter import messagebox
+from data.database import get_slide_by_id
+import tkinter as tk
+from interface.tooltips import Tooltip
+import shutil
+
 def open_note_editor(slide_id, slide_title):
     from tkinter import Toplevel, Canvas, Text, Scrollbar, messagebox, Frame, Label, StringVar
     from tkinter import ttk
@@ -25,6 +34,34 @@ def open_note_editor(slide_id, slide_title):
     top_frame.pack(fill="x", pady=(10, 0), padx=10)
 
     Label(top_frame, text=f"Slide: {slide_title}", font=("Helvetica", 14, "bold")).pack(side="left")
+
+    def open_pdf_to_page(slide_id, page_number):
+        slide = get_slide_by_id(slide_id)
+        if not slide:
+            messagebox.showerror("Error", f"Slide {slide_id} not found.")
+            return
+
+        pdf_path = slide["file_path"]
+        if not os.path.exists(pdf_path):
+            messagebox.showerror("Error", f"File not found: {pdf_path}")
+            return
+
+        try:
+            if platform.system() == "Windows":
+                acrobat_path = shutil.which("AcroRd32.exe")
+                if acrobat_path:
+                    # Try opening with Adobe Acrobat Reader and jump to page
+                    subprocess.Popen([acrobat_path, '/A', f'page={page_number}', pdf_path])
+                else:
+                    # Fallback to default PDF viewer
+                    os.startfile(pdf_path)
+            elif platform.system() == "Darwin":  # macOS
+                subprocess.Popen(['open', pdf_path])
+                # Could use AppleScript for jumping to page (optional)
+            else:  # Linux
+                subprocess.Popen(['evince', f'--page-label={page_number}', pdf_path])
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not open file:\n{e}")
 
     def save_notes():
         for page_number, widget in note_entries.items():
@@ -77,7 +114,23 @@ def open_note_editor(slide_id, slide_title):
             content_frame = Frame(row_frame)
             content_frame.pack(side="left", fill="both", expand=True, padx=5)
 
-            Label(content_frame, text=f"Page {page_number} Content:", anchor="w").pack(anchor="w")
+            label_btn_frame = Frame(content_frame)
+            label_btn_frame.pack(fill="x")
+
+            Label(label_btn_frame, text=f"Page {page_number} Content:", anchor="w").pack(side="left", anchor="w")
+
+            open_btn = tk.Button(
+                label_btn_frame,
+                text="📖",
+                command=lambda sid=slide_id, pg=page_number: open_pdf_to_page(sid, pg),
+                bg="#e6f0ff",
+                relief="ridge",
+                width=2
+            )
+            open_btn.pack(side="right")
+            Tooltip(open_btn, f"Open slide at page {page_number}")
+
+
             content_box = Text(content_frame, height=5, bg="#f0f0f0", wrap="word")
             content_box.insert("1.0", content_text)
             content_box.config(state="disabled")

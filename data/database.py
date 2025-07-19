@@ -109,6 +109,15 @@ def get_all_decks():
 
 # ------------------------
 # Slide CRUD
+
+def get_slide_by_id(slide_id):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM slide WHERE slide_id = ?", (slide_id,))
+    row = cur.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
 def insert_slide(deck_id, file_path, title=None, total_pages=None):
     conn = get_connection()
     cur = conn.cursor()
