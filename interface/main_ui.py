@@ -14,7 +14,10 @@ import platform
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from application.query_controller import delete_deck
 from application.query_controller import delete_slide as delete_slide_query
+# from service.docling_service import extract_and_store_pdf_content
+from interface.shared_import_logic import shared_import_logic  # adjust path if needed
 
+import threading
 
 
 
@@ -47,6 +50,17 @@ def launch_ui():
 
     # === Current deck selection ===
     selected_deck_id = {"value": None}  # use dict to keep reference
+
+    def show_processing_popup(text="Processing..."):
+        popup = tk.Toplevel(root)
+        popup.title("Please wait")
+        popup.geometry("250x100")
+        popup.resizable(False, False)
+        popup.grab_set()
+        popup.transient(root)
+        tk.Label(popup, text=text).pack(expand=True, padx=20, pady=20)
+        return popup
+
 
 
     def apply_theme(theme):
@@ -266,19 +280,22 @@ def launch_ui():
         if not file_paths:
             return
 
-        imported = 0
-        for file_path in file_paths:
-            title = os.path.basename(file_path)
-            try:
-                insert_slide(deck_id, file_path, title)
-                # We'll call Docling here later
-                imported += 1
-            except Exception as e:
-                messagebox.showerror("Error", f"Failed to import {title}: {str(e)}")
+        popup = show_processing_popup("Importing PDFs...")
 
-        if imported:
-            messagebox.showinfo("Success", f"{imported} slide(s) imported to the deck.")
-            refresh_slides(deck_id)
+        def run_import():
+            shared_import_logic(
+                deck_id,
+                file_paths,
+                on_success=lambda count: root.after(0, lambda: [
+                    popup.destroy(),
+                    refresh_slides(deck_id),
+                    messagebox.showinfo("Imported", f"{count} file(s) imported.")
+                ]),
+                on_fail=lambda path, err: root.after(0, lambda: messagebox.showerror("Error", f"Failed to import {path}:\n{err}"))
+            )
+
+        threading.Thread(target=run_import).start()
+
 
 
     # === Delete Deck Function ===
@@ -338,21 +355,22 @@ def launch_ui():
             return
 
         files = root.tk.splitlist(event.data)
-        imported = 0
-        for f in files:
-            if f.lower().endswith(".pdf"):
-                title = os.path.basename(f)
-                try:
-                    insert_slide(deck_id, f, title)
-                    imported += 1
-                except Exception as e:
-                    messagebox.showerror("Error", str(e))
-            else:
-                messagebox.showwarning("Invalid File", f"'{f}' is not a PDF.")
+        popup = show_processing_popup("Importing dropped files...")
 
-        if imported:
-            messagebox.showinfo("Imported", f"{imported} file(s) imported.")
-            refresh_slides(deck_id)
+        def run_import():
+            shared_import_logic(
+                deck_id,
+                files,
+                on_success=lambda count: root.after(0, lambda: [
+                    popup.destroy(),
+                    refresh_slides(deck_id),
+                    messagebox.showinfo("Imported", f"{count} file(s) imported.")
+                ]),
+                on_fail=lambda path, err: root.after(0, lambda: messagebox.showerror("Error", f"Failed to import {path}:\n{err}"))
+            )
+
+        threading.Thread(target=run_import).start()
+
 
     drop_area.dnd_bind("<<Drop>>", handle_pdf_drop)
 

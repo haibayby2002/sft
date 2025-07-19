@@ -145,3 +145,14 @@ def delete_slide(slide_id):
 
     conn.commit()
     conn.close()
+
+
+def update_slide_total_pages(slide_id, total_pages):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "UPDATE slide SET total_pages = ? WHERE slide_id = ?",
+        (total_pages, slide_id)
+    )
+    conn.commit()
+    conn.close()
