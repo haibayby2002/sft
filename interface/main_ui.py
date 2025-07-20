@@ -22,6 +22,8 @@ from interface.tooltips import Tooltip
 from interface.note_editor import open_note_editor
 from PIL import Image, ImageTk
 
+from service.gemma_client import query_gemma_stream
+
 
 
 
@@ -82,13 +84,20 @@ def launch_ui():
             except:
                 pass
 
-        slides_frame.config(bg=theme["content_bg"])
-        dragdrop_frame.config(bg=theme["content_bg"])
-        chat_frame.config(bg=theme["content_bg"])
+        slides_frame.config(bg=theme["content_bg"], fg=theme["fg"])
+        dragdrop_frame.config(bg=theme["content_bg"], fg=theme["fg"])
+        chat_frame.config(bg=theme["content_bg"], fg=theme["fg"])
         chat_log.config(bg=theme["input_bg"], fg=theme["fg"], insertbackground=theme["fg"])
         input_frame.config(bg=theme["content_bg"])
-        user_input.config(bg=theme["input_bg"], fg=theme["fg"], insertbackground=theme["fg"])
+
+        # Update user input colors based on placeholder state
+        if getattr(user_input, "_placeholder_active", False):
+            user_input.config(bg=theme["input_bg"], fg="gray", insertbackground=theme["fg"])
+        else:
+            user_input.config(bg=theme["input_bg"], fg=theme["fg"], insertbackground=theme["fg"])
+
         send_button.config(bg=theme["bg"], fg=theme["fg"])
+
 
     def toggle_theme():
         current_theme["value"] = DARK_THEME if current_theme["value"] == LIGHT_THEME else LIGHT_THEME
@@ -443,19 +452,74 @@ def launch_ui():
     chat_log.insert(tk.END, "Gemma: Welcome! Ask me about your slides...\n")
 
     # === Chat Input Frame ===
+    def add_placeholder(entry, placeholder, placeholder_color='gray', text_color='black'):
+        entry._placeholder_active = True
+
+        def set_placeholder():
+            user_input.insert(0, placeholder)
+            user_input.config(fg="gray")
+            user_input._placeholder_active = True
+
+        def clear_placeholder():
+            user_input.delete(0, tk.END)
+            user_input.config(fg=current_theme["value"]["fg"])  # Ensure correct color
+            user_input._placeholder_active = False
+
+        def on_focus_in(event):
+            if user_input._placeholder_active:
+                user_input.delete(0, tk.END)
+                user_input._placeholder_active = False
+            # Ensure foreground color is applied according to current theme
+            user_input.config(fg=current_theme["value"]["fg"])
+
+
+
+        def on_focus_out(event):
+            if not entry.get():
+                entry.insert(0, placeholder)
+                entry.config(fg=placeholder_color)
+                entry._placeholder_active = True
+
+        entry.insert(0, placeholder)
+        entry.config(fg=placeholder_color)
+        entry.bind("<FocusIn>", on_focus_in)
+        entry.bind("<FocusOut>", on_focus_out)
+        set_placeholder()
+
+
+
     input_frame = tk.Frame(content_area)
     input_frame.pack(fill="x", padx=10, pady=10)
 
     user_input = tk.Entry(input_frame)
     user_input.pack(side="left", fill="x", expand=True, padx=(0, 5))
+    user_input.bind("<Return>", lambda event: send_message())
+    placeholder_fg = "#aaaaaa" if current_theme["value"] == DARK_THEME else "gray"
+    add_placeholder(user_input, "Ask Gemma...", placeholder_color=placeholder_fg)
+
+    
+
 
     def send_message():
         message = user_input.get().strip()
-        if message:
-            chat_log.insert(tk.END, f"You: {message}\n")
-            chat_log.insert(tk.END, f"Gemma: [Response placeholder]\n")
-            user_input.delete(0, tk.END)
-            chat_log.see(tk.END)
+        if not message:
+            return
+
+        chat_log.insert(tk.END, f"You: {message}\n")
+        chat_log.insert(tk.END, "Gemma: ")
+        user_input.delete(0, tk.END)
+        chat_log.see(tk.END)
+
+        def stream_response():
+            try:
+                # Optional: Replace context=None with selected slide content if needed
+                for chunk in query_gemma_stream(prompt=message, context=None): 
+                    chat_log.insert(tk.END, chunk)
+                    chat_log.see(tk.END)
+            except Exception as e:
+                chat_log.insert(tk.END, f"\n[Error] {str(e)}\n")
+
+        threading.Thread(target=stream_response).start()
 
     send_button = tk.Button(input_frame, text="Send", command=send_message)
     send_button.pack(side="right")
