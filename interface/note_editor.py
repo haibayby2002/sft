@@ -1,47 +1,39 @@
 import platform
 import subprocess
 import os
-from tkinter import messagebox
-from data.database import get_slide_by_id
-import tkinter as tk
-from interface.tooltips import Tooltip
 import shutil
+import tkinter as tk
+from tkinter import messagebox, Toplevel, Frame, Label, StringVar, Canvas, Text, Scrollbar
+from tkinter import ttk
+
+from data.models.slide import Slide
+from data.models.page import Page
+from data.models.content import Content
+from interface.tooltips import Tooltip
+
 
 def open_note_editor(slide_id, slide_title):
-    from tkinter import Toplevel, Canvas, Text, Scrollbar, messagebox, Frame, Label, StringVar
-    from tkinter import ttk
-    from data.database import (
-        get_pages_by_slide,
-        get_page_note,
-        get_page_content,
-        insert_page_note,
-        update_page_note
-    )
-
     PAGES_PER_PAGE = 5
-    pages = list(get_pages_by_slide(slide_id))
+    pages = Page.get_by_slide(slide_id)
     total_pages = len(pages)
     current_index = {"start": 0}
 
     note_window = Toplevel()
     note_window.title(f"📝 Notes for: {slide_title}")
     note_window.geometry("1000x700")
-    note_window.transient(None)  # Make it a top-level window
-    # note_window.grab_set()
 
-    # === Title + Save Row ===
+    # === Top Bar ===
     top_frame = Frame(note_window)
     top_frame.pack(fill="x", pady=(10, 0), padx=10)
-
     Label(top_frame, text=f"Slide: {slide_title}", font=("Helvetica", 14, "bold")).pack(side="left")
 
     def open_pdf_to_page(slide_id, page_number):
-        slide = get_slide_by_id(slide_id)
+        slide = Slide.get_by_id(slide_id)
         if not slide:
             messagebox.showerror("Error", f"Slide {slide_id} not found.")
             return
 
-        pdf_path = slide["file_path"]
+        pdf_path = slide.file_path
         if not os.path.exists(pdf_path):
             messagebox.showerror("Error", f"File not found: {pdf_path}")
             return
@@ -50,15 +42,12 @@ def open_note_editor(slide_id, slide_title):
             if platform.system() == "Windows":
                 acrobat_path = shutil.which("AcroRd32.exe")
                 if acrobat_path:
-                    # Try opening with Adobe Acrobat Reader and jump to page
                     subprocess.Popen([acrobat_path, '/A', f'page={page_number}', pdf_path])
                 else:
-                    # Fallback to default PDF viewer
                     os.startfile(pdf_path)
-            elif platform.system() == "Darwin":  # macOS
+            elif platform.system() == "Darwin":
                 subprocess.Popen(['open', pdf_path])
-                # Could use AppleScript for jumping to page (optional)
-            else:  # Linux
+            else:
                 subprocess.Popen(['evince', f'--page-label={page_number}', pdf_path])
         except Exception as e:
             messagebox.showerror("Error", f"Could not open file:\n{e}")
@@ -66,25 +55,22 @@ def open_note_editor(slide_id, slide_title):
     def save_notes():
         for page_number, widget in note_entries.items():
             note = widget.get("1.0", "end").strip()
-            current = get_page_note(slide_id, page_number)
+            current = Content.get_note(slide_id, page_number)
             if current is None:
-                insert_page_note(slide_id, page_number, note)
+                Content.insert_note(slide_id, page_number, note)
             else:
-                update_page_note(slide_id, page_number, note)
+                Content.update_note(slide_id, page_number, note)
         messagebox.showinfo("Saved", "Notes updated successfully!", parent=note_window)
-        # note_window.destroy()
 
     ttk.Button(top_frame, text="💾 Save Notes", command=save_notes).pack(side="right")
 
-    # === Scrollable content area ===
+    # === Scrollable Canvas ===
     canvas = Canvas(note_window)
-    scrollbar = ttk.Scrollbar(note_window, orient="vertical", command=canvas.yview)
+    scrollbar = Scrollbar(note_window, orient="vertical", command=canvas.yview)
     scrollable_frame = ttk.Frame(canvas)
-
     scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
     canvas_frame = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
     canvas.configure(yscrollcommand=scrollbar.set)
-
     canvas.pack(side="top", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y")
 
@@ -103,9 +89,9 @@ def open_note_editor(slide_id, slide_title):
         visible_pages = pages[start:end]
 
         for page in visible_pages:
-            page_number = page["page_number"]
-            note_text = get_page_note(slide_id, page_number) or ""
-            content_text = get_page_content(slide_id, page_number) or "[No content]"
+            page_number = page.page_number
+            note_text = Content.get_note(slide_id, page_number) or ""
+            content_text = Content.get_by_page(slide_id, page_number) or "[No content]"
 
             row_frame = Frame(scrollable_frame)
             row_frame.pack(fill="x", padx=10, pady=5)
@@ -117,19 +103,14 @@ def open_note_editor(slide_id, slide_title):
             label_btn_frame = Frame(content_frame)
             label_btn_frame.pack(fill="x")
 
-            Label(label_btn_frame, text=f"Page {page_number} Content:", anchor="w").pack(side="left", anchor="w")
-
+            Label(label_btn_frame, text=f"Page {page_number} Content:", anchor="w").pack(side="left")
             open_btn = tk.Button(
-                label_btn_frame,
-                text="📖",
+                label_btn_frame, text="📖",
                 command=lambda sid=slide_id, pg=page_number: open_pdf_to_page(sid, pg),
-                bg="#e6f0ff",
-                relief="ridge",
-                width=2
+                bg="#e6f0ff", relief="ridge", width=2
             )
             open_btn.pack(side="right")
             Tooltip(open_btn, f"Open slide at page {page_number}")
-
 
             content_box = Text(content_frame, height=5, bg="#f0f0f0", wrap="word")
             content_box.insert("1.0", content_text)
@@ -158,11 +139,8 @@ def open_note_editor(slide_id, slide_title):
             current_index["start"] += PAGES_PER_PAGE
             render_page_notes()
 
-    
-    # === Pagination UI (BOTTOM of page window now) ===
     nav_frame = ttk.Frame(note_window)
     nav_frame.pack(fill="x", side="bottom", pady=(0, 10))
-
     ttk.Button(nav_frame, text="⬅️", command=go_left).pack(side="left", padx=10)
     ttk.Label(nav_frame, textvariable=page_index_label_var).pack(side="left", padx=10)
     ttk.Button(nav_frame, text="➡️", command=go_right).pack(side="left")
