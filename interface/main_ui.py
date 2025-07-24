@@ -2,10 +2,9 @@ import tkinter as tk
 from tkinter import ttk, scrolledtext, simpledialog, messagebox
 
 from application.query_controller import load_decks
-from data.database import insert_deck
 import os
 from tkinter import filedialog
-from data.database import insert_slide
+from application.query_controller import insert_slide
 from application.query_controller import load_slides
 
 import json
@@ -13,7 +12,7 @@ import os
 import subprocess
 import platform
 from tkinterdnd2 import DND_FILES, TkinterDnD
-from application.query_controller import delete_deck
+from application.query_controller import delete_deck, insert_deck
 from application.query_controller import delete_slide as delete_slide_query
 # from service.docling_service import extract_and_store_pdf_content
 from interface.shared_import_logic import shared_import_logic  # adjust path if needed
@@ -33,8 +32,8 @@ def launch_ui():
     root = TkinterDnD.Tk()
     # Initialize the main window
     root.title("Slide Fight Tactics")
-    root.geometry("1000x700")
-    root.minsize(800, 600)
+    root.geometry("800x670")
+    root.minsize(800, 650)
 
     # Load and resize the pencil icon once
     ICON_PATH = "assets/icons/ChatGPT Image Jul 19, 2025, 03_31_42 PM.png"

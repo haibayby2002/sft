@@ -1,6 +1,7 @@
 import os
 from PyPDF2 import PdfReader
-from data.database import insert_page, insert_content
+from data.models.content import Content
+from data.models.page import Page
 
 # === Change this path to your sample PDF ===
 PDF_PATH = "C:\\Users\\dell\\Downloads\\Module 1 Transcript - Blockchains, Tokens, and The Decentralized Future.pdf"  # ← Replace this with your PDF path
@@ -42,10 +43,10 @@ def extract_and_store_pdf_content(slide_id: int, pdf_path: str):
         content_text = page["text"].strip()
 
         # Insert to page table
-        insert_page(slide_id=slide_id, page_number=page_number)
+        Page.create(slide_id=slide_id, page_number=page_number)
 
         # Insert content into content table
-        insert_content(
+        Content.create(
             slide_id=slide_id,
             page_number=page_number,
             content_type="text",  # assuming all extracted is "text"

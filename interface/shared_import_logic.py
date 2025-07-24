@@ -1,8 +1,10 @@
 import os
 from PyPDF2 import PdfReader
 
-from data.database import insert_slide, update_slide_total_pages
+# from data.database import insert_slide, update_slide_total_pages
 from service.docling_service import extract_and_store_pdf_content  # ✅ use real extractor
+from data.models.slide import Slide
+from application.query_controller import insert_slide
 
 def get_total_pages(pdf_path):
     try:
@@ -22,7 +24,7 @@ def shared_import_logic(deck_id, file_paths, on_success=None, on_fail=None):
 
                 # Get and update total pages
                 total_pages = get_total_pages(file_path)
-                update_slide_total_pages(slide_id, total_pages)
+                Slide.update_total_pages(slide_id, total_pages)
 
                 # Extract actual content and store in DB
                 extract_and_store_pdf_content(slide_id, file_path)

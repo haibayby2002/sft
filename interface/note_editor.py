@@ -2,24 +2,29 @@ import platform
 import subprocess
 import os
 from tkinter import messagebox
-from data.database import get_slide_by_id
+from data.models.slide import Slide
 import tkinter as tk
 from interface.tooltips import Tooltip
 import shutil
 
+from tkinter import Toplevel, Canvas, Text, Scrollbar, messagebox, Frame, Label, StringVar
+from tkinter import ttk
+# from data.database import (
+#     # get_pages_by_slide,
+#     get_page_note,
+#     # get_page_content,
+#     insert_page_note,
+#     update_page_note
+# )
+from data.models.page_note import PageNote
+from data.models.content import Content
+from data.models.page import Page
+
 def open_note_editor(slide_id, slide_title):
-    from tkinter import Toplevel, Canvas, Text, Scrollbar, messagebox, Frame, Label, StringVar
-    from tkinter import ttk
-    from data.database import (
-        get_pages_by_slide,
-        get_page_note,
-        get_page_content,
-        insert_page_note,
-        update_page_note
-    )
+    
 
     PAGES_PER_PAGE = 5
-    pages = list(get_pages_by_slide(slide_id))
+    pages = list(Page.get_by_slide(slide_id))
     total_pages = len(pages)
     current_index = {"start": 0}
 
@@ -36,7 +41,7 @@ def open_note_editor(slide_id, slide_title):
     Label(top_frame, text=f"Slide: {slide_title}", font=("Helvetica", 14, "bold")).pack(side="left")
 
     def open_pdf_to_page(slide_id, page_number):
-        slide = get_slide_by_id(slide_id)
+        slide = Slide.get_by_id(slide_id)
         if not slide:
             messagebox.showerror("Error", f"Slide {slide_id} not found.")
             return
@@ -66,11 +71,11 @@ def open_note_editor(slide_id, slide_title):
     def save_notes():
         for page_number, widget in note_entries.items():
             note = widget.get("1.0", "end").strip()
-            current = get_page_note(slide_id, page_number)
+            current = PageNote.get(slide_id, page_number)
             if current is None:
-                insert_page_note(slide_id, page_number, note)
+                PageNote.create(slide_id, page_number, note)
             else:
-                update_page_note(slide_id, page_number, note)
+                PageNote.update(slide_id, page_number, note)
         messagebox.showinfo("Saved", "Notes updated successfully!", parent=note_window)
         # note_window.destroy()
 
@@ -104,8 +109,8 @@ def open_note_editor(slide_id, slide_title):
 
         for page in visible_pages:
             page_number = page["page_number"]
-            note_text = get_page_note(slide_id, page_number) or ""
-            content_text = get_page_content(slide_id, page_number) or "[No content]"
+            note_text = PageNote.get(slide_id, page_number) or ""
+            content_text = Content.get_by_slide_and_number(slide_id, page_number) or "[No content]"
 
             row_frame = Frame(scrollable_frame)
             row_frame.pack(fill="x", padx=10, pady=5)
