@@ -8,6 +8,7 @@ from tkinter import filedialog
 from data.database import insert_slide
 from application.query_controller import load_slides
 
+import json
 import os
 import subprocess
 import platform
@@ -23,7 +24,7 @@ from interface.note_editor import open_note_editor
 from PIL import Image, ImageTk
 
 from service.gemma_client import query_gemma_stream
-
+from application.query_controller import load_context_from_deck
 
 
 
@@ -63,6 +64,7 @@ def launch_ui():
 
     # === Current deck selection ===
     selected_deck_id = {"value": None}  # use dict to keep reference
+    current_deck_context = {"value": None}
 
     def show_processing_popup(text="Processing..."):
         popup = tk.Toplevel(root)
@@ -156,34 +158,29 @@ def launch_ui():
     def select_deck(deck):
         selected_deck_id["value"] = deck["deck_id"]
 
-        # Reset previous button style
+        # Reset and highlight button
         if selected_deck_btn["widget"] and selected_deck_btn["widget"].winfo_exists():
-            try:
-                selected_deck_btn["widget"].config(
-                    bg=current_theme["value"]["bg"],
-                    fg=current_theme["value"]["fg"]
-                )
-            except tk.TclError:
-                pass  # Widget might already be destroyed
-
-        # # Reset previous button style
-        # if selected_deck_btn["widget"]:
-        #     selected_deck_btn["widget"].config(
-        #         bg=current_theme["value"]["bg"],
-        #         fg=current_theme["value"]["fg"]
-        #     )
-
-        # Highlight selected deck
+            selected_deck_btn["widget"].config(
+                bg=current_theme["value"]["bg"],
+                fg=current_theme["value"]["fg"]
+            )
         btn = deck["button_widget"]
-        btn.config(
-            bg="#4CAF50",  # green
-            fg="white"
-        )
+        btn.config(bg="#4CAF50", fg="white")
         selected_deck_btn["widget"] = btn
 
-        # Enable import
+        # Enable import/delete buttons
         import_btn.config(state="normal")
         delete_deck_btn.config(state="normal")
+
+        # Load context
+        current_deck_context["value"] = load_context_from_deck(deck["deck_id"])
+
+        # Update placeholder
+        placeholder_fg = "#aaaaaa" if current_theme["value"] == DARK_THEME else "gray"
+        user_input.delete(0, tk.END)
+        add_placeholder(user_input, "Ask Gemma about this deck...", placeholder_color=placeholder_fg)
+
+        # Load slides
         refresh_slides(deck["deck_id"])
 
 
@@ -241,18 +238,18 @@ def launch_ui():
     
     def refresh_slides(deck_id):
         tooltip_refs = []
-        for widget in slide_list_frame.winfo_children():
+        for widget in slide_list_inner.winfo_children():
             widget.destroy()
 
         slides = load_slides(deck_id)
         if not slides:
-            tk.Label(slide_list_frame, text="No slides in this deck.").pack(anchor="w", padx=10, pady=5)
+            tk.Label(slide_list_inner, text="No slides in this deck.").pack(anchor="w", padx=10, pady=5)
             return
 
         for slide_row in slides:
             slide = dict(slide_row)
 
-            slide_container = tk.Frame(slide_list_frame)
+            slide_container = tk.Frame(slide_list_inner)
             slide_container.pack(fill="x", padx=10, pady=3)
 
             label = tk.Label(
@@ -392,9 +389,41 @@ def launch_ui():
     delete_deck_btn = tk.Button(deck_action_frame, text="🗑️ Delete Selected Deck", state="disabled", command=confirm_delete_deck)
     delete_deck_btn.pack(side="right")
 
-    # === Slide List Frame ===
-    slide_list_frame = tk.Frame(slides_frame)
-    slide_list_frame.pack(fill="both", expand=True)
+    # === Scrollable Slide List Frame ===
+    slide_list_canvas = tk.Canvas(slides_frame, height=200, borderwidth=0, highlightthickness=0)
+    scrollbar = tk.Scrollbar(slides_frame, orient="vertical", command=slide_list_canvas.yview)
+    slide_list_inner = tk.Frame(slide_list_canvas)
+
+    slide_list_inner.bind(
+        "<Configure>",
+        lambda e: slide_list_canvas.configure(
+            scrollregion=slide_list_canvas.bbox("all")
+        )
+    )
+
+    slide_list_canvas.create_window((0, 0), window=slide_list_inner, anchor="nw")
+    slide_list_canvas.configure(yscrollcommand=scrollbar.set)
+
+    def _on_mousewheel(event):
+        # Windows and macOS
+        slide_list_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+    def _on_mousewheel_linux(event):
+        # Linux scroll
+        if event.num == 4:
+            slide_list_canvas.yview_scroll(-1, "units")
+        elif event.num == 5:
+            slide_list_canvas.yview_scroll(1, "units")
+
+    # Bind the mousewheel to canvas
+    if platform.system() == 'Linux':
+        slide_list_canvas.bind_all("<Button-4>", _on_mousewheel_linux)
+        slide_list_canvas.bind_all("<Button-5>", _on_mousewheel_linux)
+    else:
+        slide_list_canvas.bind_all("<MouseWheel>", _on_mousewheel)
+
+        slide_list_canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
 
 
 
@@ -512,8 +541,9 @@ def launch_ui():
 
         def stream_response():
             try:
-                # Optional: Replace context=None with selected slide content if needed
-                for chunk in query_gemma_stream(prompt=message, context=None): 
+                context_data = current_deck_context["value"]
+                # formatted_context = json.dumps(context_data)
+                for chunk in query_gemma_stream(prompt=message):
                     chat_log.insert(tk.END, chunk)
                     chat_log.see(tk.END)
             except Exception as e:

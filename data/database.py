@@ -29,7 +29,7 @@ def initialize_db():
             file_path TEXT NOT NULL,
             title TEXT,
             total_pages INTEGER,
-            FOREIGN KEY (deck_id) REFERENCES deck(deck_id)
+            FOREIGN KEY (deck_id) REFERENCES deck(deck_id) ON DELETE CASCADE
         );
         """)
 
@@ -39,7 +39,7 @@ def initialize_db():
             slide_id INTEGER NOT NULL,
             page_number INTEGER NOT NULL,
             PRIMARY KEY (slide_id, page_number),
-            FOREIGN KEY (slide_id) REFERENCES slide(slide_id)
+            FOREIGN KEY (slide_id) REFERENCES slide(slide_id) ON DELETE CASCADE
         );
         """)
 
@@ -52,7 +52,7 @@ def initialize_db():
             content_type TEXT CHECK(content_type IN ('text', 'table', 'figure')),
             content_text TEXT,
             position_in_page INTEGER,
-            FOREIGN KEY (slide_id, page_number) REFERENCES page(slide_id, page_number)
+            FOREIGN KEY (slide_id, page_number) REFERENCES page(slide_id, page_number) ON DELETE CASCADE
         );
         """)
 
@@ -75,7 +75,7 @@ def initialize_db():
             page_number INTEGER NOT NULL,
             note_text TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (slide_id, page_number) REFERENCES page(slide_id, page_number)
+            FOREIGN KEY (slide_id, page_number) REFERENCES page(slide_id, page_number) ON DELETE CASCADE
         );
         """)
 
@@ -146,11 +146,12 @@ def get_slides_by_deck(deck_id):
 
 def delete_deck(deck_id):
     conn = get_connection()
+    conn.execute("PRAGMA foreign_keys = ON;")
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM slide WHERE deck_id = ?", (deck_id,))
     cursor.execute("DELETE FROM deck WHERE deck_id = ?", (deck_id,))
     conn.commit()
     conn.close()
+
 
 def delete_slide(slide_id):
     conn = get_connection()
