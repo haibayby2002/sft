@@ -262,58 +262,58 @@ def init_db():
 
 # ------------------------
 # Page Note CRUD
-def insert_page_note(slide_id, page_number, note_text):
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute(
-        """
-        INSERT INTO page_note (slide_id, page_number, note_text)
-        VALUES (?, ?, ?)
-        """,
-        (slide_id, page_number, note_text)
-    )
-    note_id = cur.lastrowid
-    conn.commit()
-    conn.close()
-    return note_id
+# def insert_page_note(slide_id, page_number, note_text):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute(
+#         """
+#         INSERT INTO page_note (slide_id, page_number, note_text)
+#         VALUES (?, ?, ?)
+#         """,
+#         (slide_id, page_number, note_text)
+#     )
+#     note_id = cur.lastrowid
+#     conn.commit()
+#     conn.close()
+#     return note_id
 
-def get_page_note(slide_id, page_number):
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute(
-        """
-        SELECT note_text FROM page_note
-        WHERE slide_id = ? AND page_number = ?
-        """,
-        (slide_id, page_number)
-    )
-    row = cur.fetchone()
-    conn.close()
-    return row["note_text"] if row else None
+# def get_page_note(slide_id, page_number):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute(
+#         """
+#         SELECT note_text FROM page_note
+#         WHERE slide_id = ? AND page_number = ?
+#         """,
+#         (slide_id, page_number)
+#     )
+#     row = cur.fetchone()
+#     conn.close()
+#     return row["note_text"] if row else None
 
-def update_page_note(slide_id, page_number, note_text):
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute(
-        """
-        UPDATE page_note
-        SET note_text = ?
-        WHERE slide_id = ? AND page_number = ?
-        """,
-        (note_text, slide_id, page_number)
-    )
-    conn.commit()
-    conn.close()
+# def update_page_note(slide_id, page_number, note_text):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute(
+#         """
+#         UPDATE page_note
+#         SET note_text = ?
+#         WHERE slide_id = ? AND page_number = ?
+#         """,
+#         (note_text, slide_id, page_number)
+#     )
+#     conn.commit()
+#     conn.close()
 
-def delete_page_note(slide_id, page_number):
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute(
-        """
-        DELETE FROM page_note
-        WHERE slide_id = ? AND page_number = ?
-        """,
-        (slide_id, page_number)
-    )
-    conn.commit()
-    conn.close()
+# def delete_page_note(slide_id, page_number):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute(
+#         """
+#         DELETE FROM page_note
+#         WHERE slide_id = ? AND page_number = ?
+#         """,
+#         (slide_id, page_number)
+#     )
+#     conn.commit()
+#     conn.close()

@@ -16,6 +16,18 @@ from application.query_controller import delete_deck, insert_deck
 from application.query_controller import delete_slide as delete_slide_query
 # from service.docling_service import extract_and_store_pdf_content
 from interface.shared_import_logic import shared_import_logic  # adjust path if needed
+
+from data.models.page import Page
+from data.models.content import Content
+from data.vectorstore.embedder import Embedder
+from data.vectorstore.vector_db import VectorDB
+
+embedder = Embedder()
+vectordb = VectorDB()
+
+
+
+
 from PIL import Image, ImageTk
 import threading
 from interface.tooltips import Tooltip
@@ -26,6 +38,20 @@ from service.gemma_client import query_gemma_stream
 from application.query_controller import load_context_from_deck
 
 
+def index_slide_pages(slide_id, deck_id):
+    pages = Page.get_by_slide(slide_id)
+    for p in pages:
+        page_num = p.page_number
+        content_text = Content.get_text_by_page(slide_id, page_num)
+        if content_text:
+            vector = embedder.embed_text(content_text)
+            metadata = {
+                "deck_id": deck_id,
+                "slide_id": slide_id,
+                "page_number": page_num,
+                "text_preview": content_text[:200]
+            }
+            vectordb.add_vector(vector, metadata)
 
 
 def launch_ui():
@@ -540,9 +566,18 @@ def launch_ui():
 
         def stream_response():
             try:
-                context_data = current_deck_context["value"]
-                # formatted_context = json.dumps(context_data)
-                for chunk in query_gemma_stream(prompt=message):
+                # 1. Embed user query
+                query_vec = embedder.embed_text(message)
+                results = vectordb.search_vectors(query_vec, top_k=5)
+
+                # 2. Build context string
+                context_texts = [f"[Slide {r['metadata']['slide_id']} Page {r['metadata']['page_number']}] {r['metadata']['text_preview']}" for r in results]
+                context = "\n".join(context_texts)
+
+                # 3. Pass context into Gemma prompt
+                prompt = f"Use the following slide context to answer:\n{context}\n\nQuestion: {message}"
+
+                for chunk in query_gemma_stream(prompt=prompt):
                     chat_log.insert(tk.END, chunk)
                     chat_log.see(tk.END)
             except Exception as e:

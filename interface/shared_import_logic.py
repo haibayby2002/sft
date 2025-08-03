@@ -1,10 +1,13 @@
 import os
 from PyPDF2 import PdfReader
-
-# from data.database import insert_slide, update_slide_total_pages
-from service.docling_service import extract_and_store_pdf_content  # ✅ use real extractor
+from service.docling_service import extract_and_store_pdf_content
 from data.models.slide import Slide
-from application.query_controller import insert_slide
+from data.models.page import Page
+from data.vectorstore.embedder import Embedder
+from data.vectorstore.vector_db import VectorDB
+
+embedder = Embedder()
+vector_db = VectorDB()
 
 def get_total_pages(pdf_path):
     try:
@@ -16,26 +19,45 @@ def get_total_pages(pdf_path):
 def shared_import_logic(deck_id, file_paths, on_success=None, on_fail=None):
     imported = 0
     for file_path in file_paths:
-        if file_path.lower().endswith(".pdf"):
-            title = os.path.basename(file_path)
-            try:
-                # Insert slide first
-                slide_id = insert_slide(deck_id, file_path, title)
-
-                # Get and update total pages
-                total_pages = get_total_pages(file_path)
-                Slide.update_total_pages(slide_id, total_pages)
-
-                # Extract actual content and store in DB
-                extract_and_store_pdf_content(slide_id, file_path)
-
-                imported += 1
-            except Exception as e:
-                if on_fail:
-                    on_fail(file_path, str(e))
-        else:
+        if not file_path.lower().endswith(".pdf"):
             if on_fail:
                 on_fail(file_path, "Not a PDF file.")
+            continue
+
+        title = os.path.basename(file_path)
+        try:
+            # ✅ Create Slide object
+            slide = Slide.create(deck_id, file_path, title)
+
+            # ✅ Update total pages
+            total_pages = get_total_pages(file_path)
+            Slide.update_total_pages(slide.slide_id, total_pages)
+
+            # ✅ Extract content into DB
+            extract_and_store_pdf_content(slide.slide_id, file_path)
+
+            # ✅ Embed each page
+            pages = Page.get_pages_by_slide(slide.slide_id)
+            for page in pages:
+                text = page.get_full_text()
+                if not text.strip():
+                    continue
+
+                embedding = embedder.embed_text(text)
+                metadata = {
+                    "deck_id": deck_id,
+                    "slide_id": slide.slide_id,
+                    "page_number": page.page_number,
+                    "title": title,
+                    "file_path": file_path,
+                }
+                vector_db.add_vector(embedding, text, metadata)
+
+            imported += 1
+
+        except Exception as e:
+            if on_fail:
+                on_fail(file_path, str(e))
 
     if imported and on_success:
         on_success(imported)

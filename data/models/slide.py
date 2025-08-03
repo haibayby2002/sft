@@ -24,7 +24,8 @@ class Slide:
         conn.commit()
         slide_id = cur.lastrowid
         conn.close()
-        return slide_id
+        # 🔥 return a Slide object instead of just ID
+        return cls(slide_id, deck_id, file_path, title, total_pages)
 
     @classmethod
     def get_by_id(cls, slide_id):
