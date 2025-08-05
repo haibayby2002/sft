@@ -26,14 +26,14 @@ def shared_import_logic(deck_id, file_paths, on_success=None, on_fail=None):
 
         title = os.path.basename(file_path)
         try:
-            # ✅ Create Slide object
+            # ✅ Create slide
             slide = Slide.create(deck_id, file_path, title)
 
-            # ✅ Update total pages
+            # ✅ Update page count
             total_pages = get_total_pages(file_path)
             Slide.update_total_pages(slide.slide_id, total_pages)
 
-            # ✅ Extract content into DB
+            # ✅ Extract text to DB
             extract_and_store_pdf_content(slide.slide_id, file_path)
 
             # ✅ Embed each page
@@ -58,6 +58,9 @@ def shared_import_logic(deck_id, file_paths, on_success=None, on_fail=None):
         except Exception as e:
             if on_fail:
                 on_fail(file_path, str(e))
+
+    # ✅ Very important: reload index from disk after all embedding is done
+    vector_db._load()
 
     if imported and on_success:
         on_success(imported)

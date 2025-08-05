@@ -51,7 +51,7 @@ def index_slide_pages(slide_id, deck_id):
                 "page_number": page_num,
                 "text_preview": content_text[:200]
             }
-            vectordb.add_vector(embedder, content_text, metadata)
+            vectordb.add_vector(vector, content_text, metadata)
 
 
 def launch_ui():
@@ -130,6 +130,35 @@ def launch_ui():
         current_theme["value"] = DARK_THEME if current_theme["value"] == LIGHT_THEME else LIGHT_THEME
         apply_theme(current_theme["value"])
         refresh_decks(select_after_id=selected_deck_id["value"])
+
+   # === Bind mouse wheel for scrolling ===
+    def bind_mousewheel_to_widget(widget, canvas):
+        def _on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+        def _on_mousewheel_linux(event):
+            if event.num == 4:
+                canvas.yview_scroll(-1, "units")
+            elif event.num == 5:
+                canvas.yview_scroll(1, "units")
+
+        def _on_enter(event):
+            if platform.system() == 'Linux':
+                widget.bind_all("<Button-4>", _on_mousewheel_linux)
+                widget.bind_all("<Button-5>", _on_mousewheel_linux)
+            else:
+                widget.bind_all("<MouseWheel>", _on_mousewheel)
+
+        def _on_leave(event):
+            if platform.system() == 'Linux':
+                widget.unbind_all("<Button-4>")
+                widget.unbind_all("<Button-5>")
+            else:
+                widget.unbind_all("<MouseWheel>")
+
+        widget.bind("<Enter>", _on_enter)
+        widget.bind("<Leave>", _on_leave)
+        
 
     # === Layout ===
     sidebar = tk.Frame(root, width=200)
@@ -414,6 +443,8 @@ def launch_ui():
     delete_deck_btn = tk.Button(deck_action_frame, text="🗑️ Delete Selected Deck", state="disabled", command=confirm_delete_deck)
     delete_deck_btn.pack(side="right")
 
+    
+
     # === Scrollable Slide List Frame ===
     slide_list_canvas = tk.Canvas(slides_frame, height=200, borderwidth=0, highlightthickness=0)
     scrollbar = tk.Scrollbar(slides_frame, orient="vertical", command=slide_list_canvas.yview)
@@ -441,14 +472,20 @@ def launch_ui():
             slide_list_canvas.yview_scroll(1, "units")
 
     # Bind the mousewheel to canvas
-    if platform.system() == 'Linux':
-        slide_list_canvas.bind_all("<Button-4>", _on_mousewheel_linux)
-        slide_list_canvas.bind_all("<Button-5>", _on_mousewheel_linux)
-    else:
-        slide_list_canvas.bind_all("<MouseWheel>", _on_mousewheel)
+    # if platform.system() == 'Linux':
+    #     slide_list_canvas.bind_all("<Button-4>", _on_mousewheel_linux)
+    #     slide_list_canvas.bind_all("<Button-5>", _on_mousewheel_linux)
+    # else:
+    #     slide_list_canvas.bind_all("<MouseWheel>", _on_mousewheel)
 
-        slide_list_canvas.pack(side="left", fill="both", expand=True)
-        scrollbar.pack(side="right", fill="y")
+    #     slide_list_canvas.pack(side="left", fill="both", expand=True)
+    #     scrollbar.pack(side="right", fill="y")
+
+    slide_list_canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.pack(side="right", fill="y")
+
+    bind_mousewheel_to_widget(slide_list_inner, slide_list_canvas)
+
 
 
 
@@ -505,6 +542,11 @@ def launch_ui():
     chat_log.pack(fill="both", expand=True, padx=5, pady=5)
     chat_log.insert(tk.END, "Gemma: Welcome! Ask me about your slides...\n")
 
+    bind_mousewheel_to_widget(chat_log, chat_log)
+    chat_log.pack(fill="both", expand=True, padx=5, pady=5)
+
+
+
     # === Chat Input Frame ===
     def add_placeholder(entry, placeholder, placeholder_color='gray', text_color='black'):
         entry._placeholder_active = True
@@ -555,6 +597,7 @@ def launch_ui():
 
 
     def send_message():
+        vectordb._load() 
         message = user_input.get().strip()
         if not message:
             return
