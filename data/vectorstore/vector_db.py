@@ -77,3 +77,40 @@ class VectorDB:
         self.index = faiss.IndexFlatIP(self.dim)
         self.entries = []
         self._save()
+
+    def remove_vectors_by_slide_id(self, slide_id):
+        new_metadata = []
+        new_vectors = []
+
+        # Iterate through current metadata and collect kept ones
+        for idx, meta in enumerate(self.metadata):
+            if str(meta.get("slide_id")) != str(slide_id):
+                new_metadata.append(meta)
+                vector = self.index.reconstruct(idx)
+                new_vectors.append(vector)
+
+        # Rebuild index
+        self.index = faiss.IndexFlatIP(self.dim)
+        if new_vectors:
+            self.index.add(np.array(new_vectors, dtype="float32"))
+        
+        self.metadata = new_metadata
+        self._save()
+
+    def remove_vectors_by_deck_id(self, deck_id):
+        new_metadata = []
+        new_vectors = []
+
+        for idx, meta in enumerate(self.metadata):
+            if str(meta.get("deck_id")) != str(deck_id):
+                new_metadata.append(meta)
+                vector = self.index.reconstruct(idx)
+                new_vectors.append(vector)
+
+        self.index = faiss.IndexFlatIP(self.dim)
+        if new_vectors:
+            self.index.add(np.array(new_vectors, dtype="float32"))
+        
+        self.metadata = new_metadata
+        self._save()
+

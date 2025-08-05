@@ -578,12 +578,16 @@ def launch_ui():
                 for r in results:
                     md = r["metadata"]
                     context_blocks.append(
-                        f"[Slide {md.get('slide_id')} Page {md.get('page_number')}]\n{r['content']}"
+                        f"[{md.get('title')} Page {md.get('page_number')}]\n{r['content']}"
                     )
                 context_text = "\n\n".join(context_blocks) if context_blocks else "No relevant context found."
+                print("📄 Context for Gemma:", context_text)  # Add this
 
                 # 🔥 4. Inject into Gemma
-                prompt = f"Answer the question based on the slides below:\n\n{context_text}\n\nQuestion: {message}\nAnswer:"
+                # prompt = f"Answer the question based on the slides below:\n\n{context_text}\n\nQuestion: {message}\nAnswer:"
+                prompt = f"""You are an assistant helping the user understand academic or technical slides. The following is extracted context from various slides. Use the information below to answer the user's question clearly. 
+If you use any part of the context in your answer, cite the full title name of the slide and page number to help the user find the source. Below is the context:
+{context_text}"""
 
                 for chunk in query_gemma_stream(prompt=prompt):
                     chat_log.insert(tk.END, chunk)

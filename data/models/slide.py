@@ -1,5 +1,9 @@
 import os
 from data.database import get_connection
+from data.vectorstore.vector_db import VectorDB
+
+
+
 
 
 class Slide:
@@ -78,3 +82,7 @@ class Slide:
         cursor.execute("DELETE FROM slide WHERE slide_id = ?", (slide_id,))
         conn.commit()
         conn.close()
+
+        #Step 5: Remove vectors from vector store
+        vector_db = VectorDB()
+        vector_db.remove_vectors_by_slide_id(slide_id)
