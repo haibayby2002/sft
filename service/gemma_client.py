@@ -28,7 +28,7 @@ def query_gemma_stream(prompt: str, context: str = None):
     """
     Stream response from local Ollama Gemma model with optional context and yield chunks of response text.
     """
-    print(context)
+    # print(context)
     if context:
         prompt = f"Context:\n{context}\n\nQuestion:\n{prompt}"
 

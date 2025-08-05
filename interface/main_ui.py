@@ -51,7 +51,7 @@ def index_slide_pages(slide_id, deck_id):
                 "page_number": page_num,
                 "text_preview": content_text[:200]
             }
-            vectordb.add_vector(vector, metadata)
+            vectordb.add_vector(embedder, content_text, metadata)
 
 
 def launch_ui():
@@ -566,20 +566,29 @@ def launch_ui():
 
         def stream_response():
             try:
-                # 1. Embed user query
-                query_vec = embedder.embed_text(message)
-                results = vectordb.search_vectors(query_vec, top_k=5)
+                # 🔥 1. Embed question
+                q_vec = embedder.embed_text(message)
 
-                # 2. Build context string
-                context_texts = [f"[Slide {r['metadata']['slide_id']} Page {r['metadata']['page_number']}] {r['metadata']['text_preview']}" for r in results]
-                context = "\n".join(context_texts)
+                # 🔥 2. Retrieve top 3 relevant pages
+                results = vectordb.search_vectors(q_vec, top_k=3)
+                print("🔍 RAG Search Results:", results)  # Add this
 
-                # 3. Pass context into Gemma prompt
-                prompt = f"Use the following slide context to answer:\n{context}\n\nQuestion: {message}"
+                # 🔥 3. Build context string
+                context_blocks = []
+                for r in results:
+                    md = r["metadata"]
+                    context_blocks.append(
+                        f"[Slide {md.get('slide_id')} Page {md.get('page_number')}]\n{r['content']}"
+                    )
+                context_text = "\n\n".join(context_blocks) if context_blocks else "No relevant context found."
+
+                # 🔥 4. Inject into Gemma
+                prompt = f"Answer the question based on the slides below:\n\n{context_text}\n\nQuestion: {message}\nAnswer:"
 
                 for chunk in query_gemma_stream(prompt=prompt):
                     chat_log.insert(tk.END, chunk)
                     chat_log.see(tk.END)
+
             except Exception as e:
                 chat_log.insert(tk.END, f"\n[Error] {str(e)}\n")
 

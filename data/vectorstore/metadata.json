@@ -50,7 +50,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementEveryone is responsible for everything All team members have joint responsibility for developing, delivering and supporting the software.Everything that can be automated should be automated All activities involved in testing, deployment and support should be automated if it is possible to do so. There should be mimimal manual involvement in deploying software.Measure ﬁrst, change later DevOps should be driven by a measurement program where you collect data about the system and its operation. You then use the collected data to inform decisions about changing DevOps processes and tools.Table 10.1 DevOps principles\n\u00006",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementEveryone is responsible for everythingAll team members have joint responsibility for developing, delivering and supporting the software.Everything that can be automated should be automatedAll activities involved in testing, deployment and support should be automated if it is possible to do so. There should be mimimal manual involvement in deploying software.Measure ﬁrst, change laterDevOps should be driven by a measurement program where you collect data about the system and its operation. You then use the collected data to inform decisions about changing DevOps processes and tools.Table 10.1 DevOps principles\n\u00006",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -60,7 +60,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFaster deployment Software can be deployed to production more quickly because communication delays between the people involved in the process are dramatically reduced.Reduced risk The increment of functionality in each release is small so there is less chance of feature interactions and other changes causing system failures and outages.Faster repair DevOps teams work together to get the software up and running again as soon as possible. There is no need to discover which team were responsible for the problem and to wait for them to ﬁx it.More productive teams DevOps teams are happier and more productive than the teams involved in the separate activities. Because team members are happier, they are less likely to leave to ﬁnd jobs elsewhere.Table 10.2 Beneﬁts of DevOps\n\u00007",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFaster deploymentSoftware can be deployed to production more quickly because communication delays between the people involved in the process are dramatically reduced.Reduced riskThe increment of functionality in each release is small so there is less chance of feature interactions and other changes causing system failures and outages.Faster repairDevOps teams work together to get the software up and running again as soon as possible. There is no need to discover which team were responsible for the problem and to wait for them to ﬁx it.More productive teamsDevOps teams are happier and more productive than the teams involved in the separate activities. Because team members are happier, they are less likely to leave to ﬁnd jobs elsewhere.Table 10.2 Beneﬁts of DevOps\n\u00007",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -130,7 +130,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVersion and release identiﬁcation Managed versions of a code ﬁle are uniquely identiﬁed when they are submitted to the system and can be retrieved using their identiﬁer and other ﬁle attributes.Change history recording The reasons why changes to a code ﬁle have been made are recorded and maintained.  Independent development Several developers can work on the same code ﬁle at the same time. When this is submitted to the code management system, a new version is created so that ﬁles are never overwritten by later changes.Project support All of the ﬁles associated with a project may be checked out at the same time.There is no need to check out ﬁles one at a time.Storage management The code management system includes efﬁcient storage mechanisms so that it doesn’t keep multiple copies of ﬁles that have only small differences.Table 10.4 Features of code management systems\n\u000014",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVersion and release identiﬁcationManaged versions of a code ﬁle are uniquely identiﬁed when they are submitted to the system and can be retrieved using their identiﬁer and other ﬁle attributes.Change history recordingThe reasons why changes to a code ﬁle have been made are recorded and maintained.  Independent developmentSeveral developers can work on the same code ﬁle at the same time. When this is submitted to the code management system, a new version is created so that ﬁles are never overwritten by later changes.Project supportAll of the ﬁles associated with a project may be checked out at the same time.There is no need to check out ﬁles one at a time.Storage managementThe code management system includes efﬁcient storage mechanisms so that it doesn’t keep multiple copies of ﬁles that have only small differences.Table 10.4 Features of code management systems\n\u000014",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -210,7 +210,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementContinuous integration Each time a developer commits a change to the project’s master branch, an  executable version of the system is built and tested.Continuous delivery A simulation of the product’s operating environment is created and the executable software version is tested.Continuous deployment A new release of the system is made available to users every time a change is made to the master branch of the software.Infrastructure as code Machine-readable models of the infrastructure (network, servers, routers, etc.) on which the product executes are used by conﬁguration management tools to build the software’s execution platform.  The software to be installed, such as compilers and libraries and a DBMS, are included in the infastructure model.Figure 10.5 Aspects of DevOps automation\n\u000022",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementContinuous integrationEach time a developer commits a change to the project’s master branch, an  executable version of the system is built and tested.Continuous deliveryA simulation of the product’s operating environment is created and the executable software version is tested.Continuous deploymentA new release of the system is made available to users every time a change is made to the master branch of the software.Infrastructure as codeMachine-readable models of the infrastructure (network, servers, routers, etc.) on which the product executes are used by conﬁguration management tools to build the software’s execution platform.  The software to be installed, such as compilers and libraries and a DBMS, are included in the infastructure model.Figure 10.5 Aspects of DevOps automation\n\u000022",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -350,7 +350,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementReduced costs If you use continuous deployment, you have no option but to invest in a completely automated deployment pipeline. Manual deployment is a time-consuming and error-prone process. Setting up an automated system is expensive and time-consuming but you can recover these costs quickly if you make regular updates to your product.Faster problem solving If a problem occurs, it will probably only affect a small part of the system and it will be obvious what the source of that problem is. If you bundle many changes into a single release, ﬁnding and ﬁxing problems is more difﬁcult.Faster customer feedback You can deploy new features when they are ready for customer use. You can ask them for feedback on these features and use this feedback to identify improvements that you need to make.A/B testing This is an option if you have a large customer base and use several servers for deployment. You can deploy a new version of the software on some servers and leave the older version running on others. You then use the load balancer to divert some customers to the new version while others use the older version. You can then measure and assess how new features are used to see if they do what you expect.Figure 10.6 Beneﬁts of continuous deployment\n\u000036",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementReduced costsIf you use continuous deployment, you have no option but to invest in a completely automated deployment pipeline. Manual deployment is a time-consuming and error-prone process. Setting up an automated system is expensive and time-consuming but you can recover these costs quickly if you make regular updates to your product.Faster problem solvingIf a problem occurs, it will probably only affect a small part of the system and it will be obvious what the source of that problem is. If you bundle many changes into a single release, ﬁnding and ﬁxing problems is more difﬁcult.Faster customer feedbackYou can deploy new features when they are ready for customer use. You can ask them for feedback on these features and use this feedback to identify improvements that you need to make.A/B testingThis is an option if you have a large customer base and use several servers for deployment. You can deploy a new version of the software on some servers and leave the older version running on others. You then use the load balancer to divert some customers to the new version while others use the older version. You can then measure and assess how new features are used to see if they do what you expect.Figure 10.6 Beneﬁts of continuous deployment\n\u000036",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -390,7 +390,7 @@
     }
   },
   {
-    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVisibility Your infrastructure is deﬁned as a stand-alone model that can be read, discussed, understood and reviewed by the whole DevOps team.Reproducability Using a conﬁguration management tool means that the installation tasks will always be run in the same sequence so that the same environment is always created. You are not reliant on people remembering the order that they need to do things.Reliability The complexity of managing a complex infrastructure means that system administrators often make simple mistakes, especially when the same changes have to be made to several servers. Automating the process avoids these mistakes.Recovery Like any other code, your infrastructure model can be versioned and stored in a code management system. If infrastructure changes cause problems you can easily revert to an older version and reinstall the environment that you know works.Table 10.7 Characteristics of infrastructure as code\n\u000040",
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVisibilityYour infrastructure is deﬁned as a stand-alone model that can be read, discussed, understood and reviewed by the whole DevOps team.ReproducabilityUsing a conﬁguration management tool means that the installation tasks will always be run in the same sequence so that the same environment is always created. You are not reliant on people remembering the order that they need to do things.ReliabilityThe complexity of managing a complex infrastructure means that system administrators often make simple mistakes, especially when the same changes have to be made to several servers. Automating the process avoids these mistakes.RecoveryLike any other code, your infrastructure model can be versioned and stored in a code management system. If infrastructure changes cause problems you can easily revert to an older version and reinstall the environment that you know works.Table 10.7 Characteristics of infrastructure as code\n\u000040",
     "metadata": {
       "deck_id": 10,
       "slide_id": 24,
@@ -487,6 +487,1436 @@
       "page_number": 49,
       "title": "10. DevOps and Code Management.pdf",
       "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018DevOps and Code Management",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 1,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Traditionally, separate teams were responsible software development, software release and software support. •The development team passed over a ‘ﬁnal’ version of the software to a release team. This team then built a release version, tested this and prepared release documentation before releasing the software to customers. •A third team was responsible for providing customer support.• The original development team were sometimes also responsible for implementing software changes. •Alternatively, the software may have been maintained by a separate ‘maintenance team’.Software support\n\u00002",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 2,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.1 Development, release and support\n\u00003DevelopmentTested softwareready for releaseReleaseDeployed softwareready for useSupportProblem and bugreportsFigure 10.1 Development, release and support",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 3,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•There are inevitable delays and overheads in the traditional support model. •To speed up the release and support processes, an alternative approach called DevOps (Development+Operations) has been developed.•Three factors led to the development and widespread adoption of DevOps:•Agile software engineering reduced the development time for software, but the traditional release process introduced a bottleneck between development and deployment.  •Amazon re-engineered their software around services and introduced an approach in which a service was developed and supported by the same team. Amazon’s claim that this led to signiﬁcant improvements in reliability was widely publicized.•It became possible to release software as a service, running on a public or private cloud. Software products did not have to be released to users on physical media or downloads.DevOps\n\u00004",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 4,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.2 DevOps\n\u00005\nDevelopmentDeploymentSupportFigure 10.2 Devops\nMulti-skilled DevOps team",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 5,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementEveryone is responsible for everythingAll team members have joint responsibility for developing, delivering and supporting the software.Everything that can be automated should be automatedAll activities involved in testing, deployment and support should be automated if it is possible to do so. There should be mimimal manual involvement in deploying software.Measure ﬁrst, change laterDevOps should be driven by a measurement program where you collect data about the system and its operation. You then use the collected data to inform decisions about changing DevOps processes and tools.Table 10.1 DevOps principles\n\u00006",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 6,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFaster deploymentSoftware can be deployed to production more quickly because communication delays between the people involved in the process are dramatically reduced.Reduced riskThe increment of functionality in each release is small so there is less chance of feature interactions and other changes causing system failures and outages.Faster repairDevOps teams work together to get the software up and running again as soon as possible. There is no need to discover which team were responsible for the problem and to wait for them to ﬁx it.More productive teamsDevOps teams are happier and more productive than the teams involved in the separate activities. Because team members are happier, they are less likely to leave to ﬁnd jobs elsewhere.Table 10.2 Beneﬁts of DevOps\n\u00007",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 7,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•During the development of a software product, the development team will probably create tens of thousands of lines of code and automated tests. •These will be organized into hundreds of ﬁles. Dozens of libraries may be used, and several, different programs may be involved in creating and running the code. •Code management is a set of software-supported practices that is used to manage an evolving codebase. •You need code management to ensure that changes made by different developers do not interfere with each other, and to create different product versions. •Code management tools make it easy to create an executable product from its source code ﬁles and to run automated tests on that product.Code management\n\u00008",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 8,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementAlice and Bob worked for a company called FinanceMadeSimple and were team members involved in developing a personal ﬁnance product. Alice discovered a bug in a module called TaxReturnPreparation. The bug was that a tax return was reported as ﬁled but, sometimes, it was not actually sent to the tax ofﬁce. She edited the module to ﬁx the bug. Bob was working on the user interface for the system and was also working on TaxReturnPreparation. Unfortunately, he took a copy before Alice had ﬁxed the bug and, after making his changes, he saved the module. This overwrote Alice’s changes but she was not aware of this. The product tests did not reveal the bug as it was an intermittent failure that depended on the sections of the tax return form that had been completed. The product was launched with the bug. For most users, everything worked OK. However, for a small number of users, their tax returns were not ﬁled and they were ﬁned by the revenue service. The subsequent investigation showed the software company was negligent. This was widely publicised and, as well as a ﬁne from the tax authorities,  users lost conﬁdence in the software. Many switched to a rival product. FinanceMade Simple failed and both Bob and Alice lost their jobs. Table 10.3 A code management problem\n\u00009",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 9,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Source code management, combined with automated system building, is essential for professional software engineering. •In companies that use DevOps, a modern code management system is a fundamental requirement for ‘automating everything’. •Not only does it store the project code that is ultimately deployed, it also stores all other information that is used in DevOps processes. •DevOps automation and measurement tools all interact with the code management systemCode management and DevOps\n\u000010",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 10,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.3 Code management and Devops\n\u000011Branching and mergingSave andretrieveversionsDevOps automationContinuousintegrationCode management systemContinuousdeploymentContinuousdeliveryInfrastructureas code\nDevOps measurementReportgenerationDataanalysisDatacollectionFigure 10.3 Code management and DevOps\nCoderepositoryTransfer code to/from developer’s filestoreRecoverversioninformation",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 11,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Code management systems provide a set of features that support four general areas:•Code transfer Developers take code into their personal ﬁle store to work on it then return it to the shared code management system.•Version storage and retrieval Files may be stored in several different versions and speciﬁc versions of these ﬁles can be retrieved.•Merging and branching Parallel development branches may be created for concurrent working. Changes made by developers in different branches may be merged.•Version information Information about the different versions maintained in the system may be stored and retrievedCode management fundamentals\n\u000012",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 12,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•All source code management systems have the general form shown in Figure 10.3. with a shared repository and a set of features to manage the ﬁles in that repository:•All source code ﬁles and ﬁle versions are stored in the repository, as are other artefacts such as conﬁguration ﬁles, build scripts, shared libraries and versions of tools used. •The repository includes a database of information about the stored ﬁles such as version information, information about who has changed the ﬁles, what changes were made at what times, and so on.•Files can be transferred to and from the repository and information about the different versions of ﬁles and their relationships may be updated. •Speciﬁc versions of ﬁles and information about these versions can always be retrieved from the repository.Code repository\n\u000013",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 13,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVersion and release identiﬁcationManaged versions of a code ﬁle are uniquely identiﬁed when they are submitted to the system and can be retrieved using their identiﬁer and other ﬁle attributes.Change history recordingThe reasons why changes to a code ﬁle have been made are recorded and maintained.  Independent developmentSeveral developers can work on the same code ﬁle at the same time. When this is submitted to the code management system, a new version is created so that ﬁles are never overwritten by later changes.Project supportAll of the ﬁles associated with a project may be checked out at the same time.There is no need to check out ﬁles one at a time.Storage managementThe code management system includes efﬁcient storage mechanisms so that it doesn’t keep multiple copies of ﬁles that have only small differences.Table 10.4 Features of code management systems\n\u000014",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 14,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•In 2005, Linus Torvalds, the developer of Linux, revolutionized source code management by developing a distributed version control system (DVCS) called Git to manage the code of the Linux kernel. •This was geared to supporting large-scale open source development. It took advantage of the fact that storage costs had fallen to such an extent that most users did not have to be concerned with local storage management. •Instead of only keeping the copies of the ﬁles that users are working on, Git maintains a clone of the repository on every user’s computer Git\n\u000015",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 15,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.5 Repository cloning in Git\n\u000016Shared Git repositoryMaster branchF1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  F21  F22 F23  F24  F25  F26  F27Commit and branch informationBranch 1Branch 2F7  F9  F21F2  F3\nCloneMaster branchF1  F2  F3  F4  F5  F6  F7  F8  F9  F10  F11  F12  F13  F14  F15  F16  F17  F18  F19  F20  F21  F22 F23  F24  F25  F26  F27Commit and branch informationFigure 10.5 Repository cloning in Git\nAlice’s repository",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 16,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Resilience•Everyone working on a project has their own copy of the repository. If the shared repository is damaged or subjected to a cyberattack, work can continue, and the clones can be used to restore the shared repository. People can work ofﬂine if they don’t have a network connection.•Speed•Committing changes to the repository is a fast, local operation and does not need data to be transferred over the network. •Flexibility•Local experimentation is much simpler. Developers can safely experiment and try different approaches without exposing these to other project members. With a centralized system, this may only be possible by working outside the code management system.•Beneﬁts of distributed code management\n\u000017",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 17,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.6 Git repositories\n\u000018GithubFigure 10.6 Git repositories\nRP1RP2RP3RP4Project 1Project 2\nProject 3Project 4RP1aRP1bRP1dRP1cRP2pRP2rRP2a\nRP3aRP3bRP3fRP3cRP4jRP4k",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 18,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Branching and merging are fundamental ideas that are supported by all code management systems. •A branch is an independent, stand-alone version that is created when a developer wishes to change a ﬁle. •The changes made by developers in their own branches may be merged to create a new shared branch. •The repository ensures that branch ﬁles that have been changed cannot overwrite repository ﬁles without a merge operation.•If Alice or Bob make mistakes on the branch they are working on, they can easily revert to the master ﬁle. •If they commit changes, while working, they can revert to earlier versions of the work they have done. When they have ﬁnished and tested their code, they can then replace the master ﬁle by merging the work they have done with the master branchBranching and merging\n\u000019",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 19,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.7 Branching and merging\n\u000020MergeFigure 10.7 Branching and mergingAlice\nBobFeature experiment branch\nBug fix branchMaster branch",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 20,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•By using DevOps with automated support, you can dramatically reduce the time and costs for integration, deployment and delivery.•Everything that can be, should be automated is a fundamental principle of DevOps. •As well as reducing the costs and time required for integration, deployment and delivery, process automation also makes these processes more reliable and reproducible. •Automation information is encoded in scripts and system models that can be checked, reviewed, versioned and stored in the project repository.DevOps automation\n\u000021",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 21,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementContinuous integrationEach time a developer commits a change to the project’s master branch, an  executable version of the system is built and tested.Continuous deliveryA simulation of the product’s operating environment is created and the executable software version is tested.Continuous deploymentA new release of the system is made available to users every time a change is made to the master branch of the software.Infrastructure as codeMachine-readable models of the infrastructure (network, servers, routers, etc.) on which the product executes are used by conﬁguration management tools to build the software’s execution platform.  The software to be installed, such as compilers and libraries and a DBMS, are included in the infastructure model.Figure 10.5 Aspects of DevOps automation\n\u000022",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 22,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•System integration (system building) is the process of gathering all of the elements required in a working system, moving them into the right directories, and putting them together to create an operational system. •Typical activities that are part of the system integration process include:•Installing database software and setting up the database with the appropriate schema.•Loading test data into the database.•Compiling the ﬁles that make up the product.•Linking the compiled code with the libraries and other components used.•Checking that external services used are operational. •Deleting old conﬁguration ﬁles and moving conﬁguration ﬁles to the correct locations.•Running a set of system tests to check that the integration has been successful.System integration\n\u000023",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 23,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Continuous integration simply means that an integrated version of the system is created and tested every time a change is pushed to the system’s shared repository. •On completion of the push operation, the repository sends a message to an integration server to build a new version of the product•The advantage of continuous integration compared to less frequent integration is that it is faster to ﬁnd and ﬁx bugs in the system. •If you make a small change and some system tests then fail, the problem almost certainly lies in the new code that you have pushed to the project repo. •You can focus on this code to ﬁnd the bug that’s causing the problem. Continuous integration\n\u000024",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 24,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.9 Continuous integration\n\u000025GETCOMPILE AND BUILDTESTExecutablesystemFigure 10.9 Continuous integrationSource code filesfrom code management\nLibrariesConfigurationfilesDatabasefilesExecutabletestsDeployablesystem\nTrigger from repo",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 25,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•In a continuous integration environment, developers have to make sure that they don’t ‘break the build’. •Breaking the build means pushing code to the project repository which, when integrated, causes some of the system tests to fail. •If this happens to you, your priority should be to discover and ﬁx the problem so that normal development can continue. •To avoid breaking the build, you should always adopt an ‘integrate twice’ approach to system integration. •You should integrate and test on your own computer before pushing code to the project repository to trigger the integration server Breaking the build\n\u000026",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 26,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.10 Local integration\n\u000027Make changesto codeCommit changesto local repoPull changes to master branchMerge masterwith local repoCompile andbuild systemTestsystemExecutablesystemTest failurePush codeto project repoTestsuccessExecutabletestsFigure 10.10 Local integrationFrom project repo",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 27,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Continuous integration is only effective if the integration process is fast and developers do not have to wait for the results of their tests of the integrated system. •However, some activities in the build process, such as populating a database or compiling hundreds of system ﬁles, are inherently slow. •It is therefore essential to have an automated build process that minimizes the time spent on these activities. •Fast system building is achieved using a process of incremental building, where only those parts of the system that have been changed are rebuiltSystem building\n\u000028",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 28,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.11 A dependency model\n\u000029Test executionProgram object code filesFigure 10.11 A dependency modelTest sourcecode filesProgram source code filesTest object code filesdepends ondepends on",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 29,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Figure 10.11 is a dependency model that shows the dependencies for test execution. •The upward-pointing arrow means ‘depends on’ and shows the information required to complete the task shown in the rectangle at the base of the model. •Running a set of system tests depends on the existence of executable object code for both the program being tested and the system tests. •In turn, these depend on the source code for the system and the tests that are compiled to create the object code. •Figure 10.12 is a lower-level dependency model that shows the dependencies involved in creating the object code for a source code ﬁles called Mycode.Dependencies\n\u000030",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 30,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.12 File dependencies\n\u000031Mycode (compiled)Mycode (source)Lib 2Figure 10.12 File dependenciesClassdef (compiled)Lib 2",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 31,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•An automated build system uses the speciﬁcation of dependencies to work out what needs to be done. It uses the ﬁle modiﬁcation timestamp to decide if a source code ﬁle has been changed. •The modiﬁcation date of the compiled code is after the modiﬁcation date of the source code. The build system infers that no changes have been made to the source code and does nothing.•The modiﬁcation date of the compiled code is before the modiﬁcation date of the compiled code. The build system recompiles the source and replaces the existing ﬁle of compiled code with an updated version.•The modiﬁcation date of the compiled code is after the modiﬁcation date of the source code. However, the modiﬁcation date of Classdef is after the modiﬁcation date of the source code of Mycode. Therefore, Mycode has to be recompiled to incorporate these changes.\n\u000032",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 32,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Continuous integration means creating an executable version of a software system whenever a change is made to the repository. The CI tool builds the system and runs tests on your development computer or project integration server. •However, the real environment in which software runs will inevitably be different from your development system. •When your software runs in its real, operational environment bugs may be revealed that did not show up in the test environment.•Continuous delivery means that, after making changes to a system, you ensure that the changed system is ready for delivery to customers. •This means that you have to test it in a production environment to make sure that environmental factors do not cause system failures or slow down its performance.Continuous delivery and deployment\n\u000033",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 33,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.13 Continuous delivery and deployment\n\u000034Continuous deliveryTestedsystemConfigure test serverInstall systemon test serverRun acceptancetestsInstall software onproduction serversSwitch operation to new softwareContinuous deploymentAll tests passFigure 10.13 Continuous delivery and deploymentRequiredsoftwareTestset",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 34,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•After initial integration testing, a staged test environment is created. •This is a replica of the actual production environment in which the system will run. •The system acceptance tests, which include functionality, load and performance tests, are then run to check that the software works as expected. If all of these tests pass, the changed software is installed on the production servers.•To deploy the system, you then momentarily stop all new requests for service and leave the older version to process the outstanding transactions. •Once these have been completed, you switch to the new version of the system and restart processing.The deployment pipeline\n\u000035",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 35,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementReduced costsIf you use continuous deployment, you have no option but to invest in a completely automated deployment pipeline. Manual deployment is a time-consuming and error-prone process. Setting up an automated system is expensive and time-consuming but you can recover these costs quickly if you make regular updates to your product.Faster problem solvingIf a problem occurs, it will probably only affect a small part of the system and it will be obvious what the source of that problem is. If you bundle many changes into a single release, ﬁnding and ﬁxing problems is more difﬁcult.Faster customer feedbackYou can deploy new features when they are ready for customer use. You can ask them for feedback on these features and use this feedback to identify improvements that you need to make.A/B testingThis is an option if you have a large customer base and use several servers for deployment. You can deploy a new version of the software on some servers and leave the older version running on others. You then use the load balancer to divert some customers to the new version while others use the older version. You can then measure and assess how new features are used to see if they do what you expect.Figure 10.6 Beneﬁts of continuous deployment\n\u000036",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 36,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•In an enterprise environment, there are usually many different physical or virtual servers (web servers, database servers, ﬁle servers, etc.) that do different things. These have different conﬁgurations and run different software packages. •It is therefore difﬁcult to keep track of the software installed on each machine.•The idea of infrastructure as code was proposed as a way to address this problem. Rather than manually updating the software on a company’s servers, the process can be automated using a model of the infrastructure written in a machine-processable language. •Conﬁguration management (CM) tools such as Puppet and Chef can automatically install software and services on servers according to the infrastructure deﬁnitionInfrastructure as code\n\u000037",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 37,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.14 Infrastructure as code\n\u000038S1: ......       ......S2: ......       ......S3, S4:        ......       ......InfrastructuredefinitionCM toolSoftware to beinstalledServersS1S2S3Figure 10.14 Infrastructure as code\nS4",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 38,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Deﬁning your infrastructure as code and using a conﬁguration management system solves two key problems of continuous deployment.•Your testing environment must be exactly the same as your deployment environment. If you change the deployment environment, you have to mirror those changes in your testing environment.•When you change a service, you have to be able to roll that change out to all of your servers quickly and reliably. If there is a bug in your changed code that affects the system’s reliability, you have to be able to seamlessly roll back to the older system.•The business beneﬁts of deﬁning your infrastructure as code are lower costs of system management and lower risks of unexpected problems arising when infrastructure changes are implemented. Beneﬁts of infrastructure as code\n\u000039",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 39,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementVisibilityYour infrastructure is deﬁned as a stand-alone model that can be read, discussed, understood and reviewed by the whole DevOps team.ReproducabilityUsing a conﬁguration management tool means that the installation tasks will always be run in the same sequence so that the same environment is always created. You are not reliant on people remembering the order that they need to do things.ReliabilityThe complexity of managing a complex infrastructure means that system administrators often make simple mistakes, especially when the same changes have to be made to several servers. Automating the process avoids these mistakes.RecoveryLike any other code, your infrastructure model can be versioned and stored in a code management system. If infrastructure changes cause problems you can easily revert to an older version and reinstall the environment that you know works.Table 10.7 Characteristics of infrastructure as code\n\u000040",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 40,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•A container provides a stand-alone execution environment running on top of an operating system such as Linux. •The software installed in a Docker container is speciﬁed using a Dockerﬁle, which is, essentially, a deﬁnition of your software infrastructure as code. •You build an executable container image by processing the Dockerﬁle. •Using containers makes it very simple to provide identical execution environments. •For each type of server that you use, you deﬁne the environment that you need and build an image for execution. You can run an application container as a test system or as an operational system; there is no distinction between them. •When you update your software, you rerun the image creation process to create a new image that includes the modiﬁed software. You can then start these images alongside the existing system and divert service requests to them.Containers\n\u000041",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 41,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•After you have adopted DevOps, you should try to continuously improve your DevOps process to achieve faster deployment of better-quality software.•There are four types of software development measurement:•Process measurement You collect and analyse data about your development, testing and deployment processes.•Service measurement You collect and analyse data about the software’s performance, reliability and acceptability to customers. •Usage measurement You collect and analyse data about how customers use your product.•Business success measurement You collect and analyse data about how your product contributes to the overall success of the business.DevOps measurement\n\u000042",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 42,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•As far as possible, the DevOps principle of automating everything should be applied to software measurement. •You should instrument your software to collect data about itself and you should use a monitoring system, as I explained in Chapter 6, to collect data about your software’s performance and availability. •Some process measurements can also be automated. •However, there are problems in process measurement because people are involved. They work in different ways, may record information differently and are affected by outside inﬂuences that affect the way they work.•Automating measurement\n\u000043",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 43,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.15 Metrics used in the DevOps scorecard\n\u000044Figure 10.15 Metrics used in the DevOps scorecardDeploymentfrequencyChangevolume\nDevOpsmetricsLead time fromdevelopment to deploymentPercentage offailed deploymentsMean time to recoveryNumber of customer complaintsAvailabilityPerformancePercentage increasein customer numbersProcess metrics\nService metrics",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 44,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Payal Chakravarty from IBM suggests a practical approach to DevOps measurement based around a metrics scorecard with 9 metrics:•These are relevant to software that is delivered as a cloud service. They include process metrics and service metrics•For the process metrics, you would like to see decreases in the number of failed deployments, the mean time to recovery after a service failure and the lead time from development to deployment. •You would hope to see increases in the deployment frequency and the number of lines of changed code that are shipped. •For the service metrics, availability and performance should be stable or improving, the number of customer complaints should be decreasing, and the number of new customers should be increasing.Metrics scorecard\n\u000045",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 45,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.16 Metrics trends\n\u000046WeeksAvailabilityDeploymentfrequencyNumber ofcustomercomplaintsFigure 10.16 Metrics trends\n12345",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 46,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code ManagementFigure 10.17 Logging and analysis\n\u000047ExecutingsoftwareLog 2Log 1Log 3LoganalyserMetrics dashboardFigure 10.17 Logging and analysis",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 47,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•DevOps is the integration of software development and the management of that software once it has been deployed for use. The same team is responsible for development, deployment and software support.•The beneﬁts of DevOps are faster deployment, reduced risk, faster repair of buggy code and more productive teams.•Source code management is essential to avoid changes made by different developers interfering with each other.•All code management systems are based around a shared code repository with a set of features that support code transfer, version storage and retrieval, branching and merging and maintaining version information.•Git is a distributed code management system that is the most widely used system for software product development. Each developer works with their own copy of the repository which may be merged with the shared project repository.Key points 1\n\u000048",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 48,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:DevOps and Code Management•Continuous integration means that as soon as a change is committed to a project repository, it is integrated with existing code and a new version of the system is created for testing.•Automated system building tools reduce the time needed to compile and integrate the system by only recompiling those components and their dependents that have changed.•Continuous deployment means that as soon as a change is made, the deployed version of the system is automatically updated. This is only possible when the software product is delivered as a cloud-based service.•Infrastructure as code means that the infrastructure (network, installed software, etc.) on which software executes is deﬁned as a machine-readable model. Automated tools, such as Chef and Puppet, can provision servers based on the infrastructure model.•Measurement is a fundamental principle of DevOps. You may make both process and product measurements. Important process metrics are deployment frequency, percentage of failed deployments, and mean time to recovery from failure.Key points 2\n\u000049",
+    "metadata": {
+      "deck_id": 11,
+      "slide_id": 25,
+      "page_number": 49,
+      "title": "10. DevOps and Code Management.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/10. DevOps and Code Management.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018Agile Software Engineering",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 1,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Software products must be brought to market quickly so rapid software development and delivery is essential.•Virtually all software products are now developed using an agile approach.•Agile software engineering focuses on delivering functionality quickly, responding to changing product speciﬁcations and minimizing development overheads. •A large number of ‘agile methods’ have been developed. •There is no ‘best’ agile method or technique.•It depends on who is using the technique, the development team and the type of product being developedAgile software engineering\n\u00002",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 2,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Plan-driven development evolved to support the engineering of large, long-lifetime systems (such as aircraft control systems) where teams may be geographically dispersed and work on the software for several years.•This approach is based on controlled and rigorous software development processes that include detailed project planning, requirements speciﬁcation and analysis and system modelling.•However, plan-driven development involves signiﬁcant overheads and documentation and it does not support the rapid development and delivery of software.•Agile methods were developed in the 1990s to address this problem. •These methods focus on the software rather than its documentation, develop software in a series of increments and aim to reduce process bureaucracy as much as possible.Agile methods\n\u00003",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 3,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringWe are uncovering better ways of developing software by doing it and helping others to do it. Through this work, we have come to value:- individuals and interactions over processes and tools;- working software over comprehensive documentation;- customer collaboration over contract negotiation;- responding to change over following a plan.While there is value on the items on the right, we value the items on the left more.Table 2.1 The agile manifesto\n\u00004",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 4,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•All agile methods are based around incremental development and delivery. •Product development focuses on the software features, where a feature does something for the software user.•With incremental development, you start by prioritizing the features so that the most important features are implemented ﬁrst. •You only deﬁne the details of the feature being implemented in an increment. •That feature is then implemented and delivered. •Users or surrogate users can try it out and provide feedback to the development team. You then go on to deﬁne and implement the next feature of the system.Incremental development\n\u00005",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 5,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.1 Incremental development\n\u00006Figure 2.1 Incremental developmentProduct feature listIf all features are complete, deliver system releaseChoose features to be included in incrementRefine feature descriptionsDeliver system incrementIntegrate feature into systemImplement andtest feature",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 6,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringChoose features to be included in an incrementUsing the list of features in the planned product, select those features that can be implemented in the next product increment.Reﬁne feature descriptionsAdd detail to the feature descriptions so that the team have a common understanding of each feature and there is sufﬁcient detail to begin implementation.Implement and testImplement the feature and develop automated tests for that feature that show that its behaviour is consistent with its description.  Integrate feature and testIntegrate the developed feature with the existing system and test it to check that it works in conjunction with other features.Deliver system incrementDeliver the system increment to the customer or product manager for checking and comments. If enough features have been implemented, release a version of the system for customer use.Table 2.2 Incremental development activities\n\u00007",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 7,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringInvolve the customerInvolve customers closely with the software development team. Their role is to provide and prioritize new system requirements and to evaluate each increment of the system. Embrace changeExpect the features of the product and the details of these features to change as the development team and the product manager learn more about it. Adapt the software to cope with changes as they are made.Develop and deliver incrementallyAlways develop software products in increments. Test and evaluate each increment as it is developed and feed back required changes to the development team.  Table 2.3 Agile development principles\n\u00008",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 8,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringMaintain simplicityFocus on simplicity in both the software being developed and in the development process. Wherever possible, do what you can to eliminate complexity from the system.Focus on people, not thingsTrust the development team and do not expect everyone to always do the development process in the same way. Team members should be left to develop their own ways of working without being limited by prescriptive software processes.Table 2.3 Agile development principles\n\u00009",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 9,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The most inﬂuential work that has changed software development culture was the development of Extreme Programming (XP). •The name was coined by Kent Beck in 1998 because the approach was developed by pushing recognized good practice, such as iterative development, to ‘extreme’ levels.•Extreme programming focused on 12 new development techniques that were geared to rapid, incremental software development, change and delivery.•Some of these techniques are now widely used; others have been less popular.•The most widely used XP techniques (highlighted in red on the following slide) are explained elsewhere in the book.Extreme programming\n\u000010",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 10,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.2 Extreme programming practices\n\u000011Test-firstdevelopmentRefactoring\nPair programmingSimpledesignOn-sitecustomerSustainablepaceContinuousintegrationSmallreleasesIncrementalplanningCollectiveownershipExtremeprogrammingFigure 2.2 Extreme programming practices",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 11,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringIncremental planning/user storiesThere is no ‘grand plan’ for the system. Instead, what needs to be implemented (the requirements) in each increment are established in discussions with a customer representative. The requirements are written as user stories. The stories to be included in a release are determined by the time available and their relative priority. Small releasesThe minimal useful set of functionality that provides business value is developed ﬁrst. Releases of the system are frequent and incrementally add functionality to the previous release.Test-driven development Instead of writing code then tests for that code, developers write the tests ﬁrst. This helps clarify what the code should actually do and that there is always a ‘tested’ version of the code available. An automated unit test framework is used to run the tests after every change. New code should not ‘break’ code that has already been implemented.Table 2.4 Widely adopted XP practices\n\u000012",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 12,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringContinuous integrationAs soon as the work on a task is complete, it is integrated into the whole system and a new version of the system is created. All unit tests from all developers are run automatically and must be successful before the new version of the system is accepted.RefactoringRefactoring means improving the structure, readability, efﬁciency and security of a program. All developers are expected to refactor the code as soon as potential code improvements are found. This keeps the code simple and maintainable.Table 2.4 Widely adopted XP practices\n\u000013",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 13,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Software company managers need information that will help them understand how much it costs to develop a software product, how long it will take and when the product can be brought to market.•Plan-driven development provides this information through long-term development plans that identify deliverables - items the team will deliver and when these will be delivered.•Plans always change so anything apart from short-term plans are unreliable.•Scrum is an agile method that provides a framework for agile project organization and planning. It does not mandate any speciﬁc technical practices. Scrum\n\u000014",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 14,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringProductThe software product that is being developed by the Scrum team.Product ownerA team member who is responsible for identifying product features and attributes. They review work done and help to test the product.Product backlogA to-do list of items such as bugs, features and product improvements that the Scrum team have not yet completed.Development teamA small self-organising team of ﬁve to eight people who are responsible for developing the product.Sprint A short period, typically two to four weeks, when a product increment is developed.Table 2.5 Scrum terminology\n\u000015",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 15,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringScrumA daily team meeting where progress is reviewed and work to be done that day as discussed and agreed.ScrumMasterA team coach who guides the team in the effective use of Scrum.Potentially shippable product incrementThe output of a sprint which should be of high enough quality to be deployed for customer use.VelocityAn estimate of how much work a team can do in a single sprint.Table 2.5 Scrum terminology\n\u000016",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 16,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The Product Owner is responsible for ensuring that the development team are always focused on the product they are building rather than diverted into technically interesting but less relevant work. •In product development, the product manager should normally take on the Product Owner role.   •The ScrumMaster is a Scrum expert whose job is to guide the team in the effective use of the Scrum method. The developers of Scrum emphasize that the ScrumMaster is not a conventional project manager but is a coach for the team. They have authority within the team on how Scrum is used. •In many companies that use Scrum, the ScrumMaster also has some project management responsibilities.Key roles in Scrum\n\u000017",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 17,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In Scrum, software is developed in sprints, which are ﬁxed-length periods (2 - 4 weeks) in which software features are developed and delivered.•During a sprint, the team has daily meetings (Scrums) to review progress and to update the list of work items that are incomplete.•Sprints should produce a ‘shippable product increment’. This means that the developed software should be complete and ready to deploy.Scrum and sprints\n\u000018",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 18,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.3 Scrum cycles\n\u000019ScrumDevelopsoftwareTestsoftwareSelect itemsto implementPlansprintSprintReviewsprintReview product backlogFigure 2.3. Scrum cycles\nProductbacklogShippableproduct incrementSprintbacklogStart",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 19,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.4 The top ﬁve beneﬁts of using Scrum\n\u000020Product\nProgressPeopleUnstable requirements do not hold up progress.The product is broken down into a set of understandable chunks that stakeholders can relate to.\nCustomers see on-time delivery of increments and gain feedback on how the product works. Team communication is improved because everyone can see  everything.ScrumbenefitsFigure 2.4 The top-five benefits of using Scrum\nTrust between customers and developers is established and a positive culture is created.",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 20,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Product backlogThis is a to-do list of items to be implemented that is reviewed and updated before each sprint.•Timeboxed sprintsFixed-time (2-4 week) periods in which items from the product backlog are implemented,•Self-organizing teamsSelf-organizing teams make their own decisions and work by discussing issues and making decisions by consensus.Key Scrum practices\n\u000021",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 21,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The product backlog is a list of what needs to be done to complete the development of the product. •The items on this list are called product backlog items (PBIs). •The product backlog may include a variety of different items such as product features to be implemented, user requests, essential development activities and desirable engineering improvements.  •The product backlog should always be prioritized so that the items that be implemented ﬁrst are at the top of the list.  Product backlogs\n\u000022",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 22,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering1.  As a teacher, I want to be able to conﬁgure the group of tools that are available to individual classes. (feature)2.  As a parent, I want to be able to view my childrens’ work and the assessments made by their teachers. (feature)3.  As a teacher of young children, I want a pictorial interface for children with limited reading ability. (user request)4. Establish criteria for the assessment of open source software that might be used as a basis for parts of this system. (development activity)5.  Refactor user interface code to improve understandability and performance. (engineering improvement)6.  Implement encryption for all personal user data. (engineering improvement)Table 2.6 Examples of product backlog items\n\u000023",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 23,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringReady for considerationThese are high-level ideas and feature descriptions that will be considered for inclusion in the product. They are tentative so may radically change or may not be included in the ﬁnal product.Ready for reﬁnementThe team has agreed that this is an important item that should be implemented as part of the current development. There is a reasonably clear deﬁnition of what is required. However, work is needed to understand and reﬁne the item.Ready for implementationThe PBI has enough detail for the team to estimate the effort involved and to implement the item. Dependencies on other items have been identiﬁed.Table 2.7 Product backlog item states\n\u000024",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 24,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.5 Product backlog activities\n\u000025Figure 2.5 Product backlog activitiesPRODUCT BACKLOG\nCreationRefinementEstimationPBI 1PBI 2PBI 3PBI 5PBI 4PBI 4PBI 1.1PBI 1.2PBI 3EPBI 2EPrioritizationCreationPBI 6PBI 5REVISEDPRODUCT BACKLOG",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 25,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Reﬁnement Existing PBIs are analysed and reﬁned to create more detailed PBIs. This may lead to the creation of new product backlog items.•EstimationThe team estimate the amount of work required to implement a PBI and add this assessment to each analysed PBI.•Creation New items are added to the backlog. These may be new features suggested by the product manager, required feature changes, engineering improvements, or process activities such as the assessment of development tools that might be used.•PrioritizationThe product backlog items are reordered to take new information and changed circumstances into account.•Product backlog activities\n\u000026",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 26,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Effort required•This may be expressed in person-hours or person-days i.e. the number of hours or days it would take one person to implement that PBI. This is not the same as calendar time. Several people may work on an item, which may shorten the calendar time required.  •Story points•Story points are an arbitrary estimate of the effort involved in implementing a PBI, taking into account the size of the task, its complexity, the technology that may be required and the ‘unknown’ characteristics of the work. •They were derived originally by comparing user stories, but they can be used for estimating any kind of PBI. •Story points are estimated relatively. The team agree on the story points for a baseline task and other tasks are estimated by comparison with this e.g. more/less complex, larger/smaller etc.  PBI estimation metrics\n\u000027",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 27,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Products are developed in a series of sprints, each of which delivers an increment of the product or supporting software. •Sprints are short duration activities (1-4 weeks) and take place between a deﬁned start and end date. Sprints are timeboxed, which means that development stops at the end of a sprint whether or not the work has been completed.•During a sprint, the team work on the items from the product backlog.Timeboxed sprints\n\u000028",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 28,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.6 Beneﬁts of using timeboxed sprints\n\u000029Demonstrable progress\nProblem discoveryWork planningThere is a tangible output (usually a software demonstrator) that can be delivered at the end of every sprint. \nIf errors and omissions are discovered the rework required is limited to the duration of a sprint.The team develops an understand-ing of how much work they can do in a fixed time period. Time-boxingbenefitsFigure 2.6 Benefits of using timeboxed sprints",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 29,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Sprint planning Work items to be completed in that sprint are selected and, if necessary, reﬁned to create a sprint backlog. This should not last more than a day at the beginning of the sprint.•Sprint executionThe team work to implement the sprint backlog items that have been chosen for that sprint. If it is impossible to complete all of the sprint backlog items, the sprint is not extended. The unﬁnished items are returned to the product backlog and queued for a future sprint.•Sprint reviewingThe work done in the sprint is reviewed by the team and (possibly) external stakeholders. The team reﬂect on what went well and what went wrong during the sprint with a view to improving their work process.Sprint activities\n\u000030",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 30,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.7 Sprint activities\n\u000031Sprint planningSprint reviewSprint backlogFigure 2.7 Sprint activities\nScrumDevelopsoftwareIntegrateSprint executionSprint backlog",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 31,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering• Establish an agreed sprint goal•Sprint goals may be focused on software functionality, support or performance and reliability,.•Decide on the list of items from the product backlog that should be implemented•Create a sprint backlog. •This is a more detailed version of the product backlog that records the work to be done during the sprintSprint planning\n\u000032",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 32,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.8 Sprint goals\n\u000033Functional\nSupportPerformance and reliabilityImplement user roles so that a user can select their role when they login to the system\nDevelop analytics that maintain information about the time users spend using each feature of the system.Ensure that the login response time is less than 10 seconds for all users where there are up to 2000 simultaneous login connections.SprintgoalsFigure 2.8 Sprint goals",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 33,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In a sprint plan, the team decides which items in the product backlog should be implemented during that sprint.•Key inputs are the effort estimates associated with PBIs and the team’s velocity•The output of the sprint planning process is a sprint backlog.•The sprint backlog is a breakdown of PBIs to show the what is involved in implementing the PBIs chosen for that sprint.•During a sprint, the team have daily meetings (scrums) to coordinate their work.Sprint planning\n\u000034",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 34,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringA scrum is a short, daily meeting that is usually held at the beginning of the day. During a scrum, all team members share information, describe their progress since the previous day’s scrum, problems that have arisen and plans for the coming day. This means that everyone on the team knows what is going on and, if problems arise, can re-plan short-term work to cope with them.  Scrum meetings should be short and focused. To dissuade team members from getting involved in long discussions, they are sometimes organized as ‘stand-up’ meetings where there are no chairs in the meeting room.During a scrum, the sprint backlog is reviewed. Completed items are removed from it. New items may be added to the backlog as new information emerges. The team then decide who should work on sprint backlog items that day.Table 2.8 Scrums\n\u000035",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 35,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Scrum does not suggest the technical agile activities that should be used. However, I think there are two practices that should always be used in a sprint.•Test automationAs far as possible, product testing should be automated. You should develop a suite of executable tests that can be run at any time.  •Continuous integrationWhenever anyone makes changes to the software components they are developing, these components should be immediately integrated with other components to create a system. This system should then be tested to check for unanticipated component interaction problems. Agile activities\n\u000036",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 36,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringReviewedThe code has been reviewed by another team member who has checked that it meets agreed coding standards, is understandable, includes appropriate comments, and has been refactored if necessary.Unit testedAll unit tests have been run automatically and all tests have executed  successfully.IntegratedThe code has been integrated with the project codebase and no integration errors have been reported.Integration testedAll integration tests have been run automatically and all tests have executed successfully.AcceptedAcceptance tests have been run if appropriate and the product owner or the development team have conﬁrmed that the product backlog item has been completed. Table 2.9 Code completeness checklist\n\u000037",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 37,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•At the end of each sprint, there is a review meeting, which involves the whole team. This meeting:•reviews whether or not the sprint has met its goal. •sets out any new problems and issues that have emerged during the sprint.•is a way for a team to reﬂect on how they can improve the way they work. •The product owner has the ultimate authority to decide whether or not the goal of the print has been achieved. They should conﬁrm that the implementation of the selected product backlog items is complete. •The sprint review should include a process review, in which the team reﬂects on its own way of working and how Scrum has been used.  •The aim is to identify ways to improve and to discuss how to use Scrum more productively. Sprint reviews\n\u000038",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 38,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.9 Self-organizing teams\n\u000039Self-organizingteamFigure 2.9 Self-organizing teamscoordinates the work of the team members by discussing tasks andreaching a consensus onwho should do what.limits the involvement of engineers in external interactions with management and customers.makes its own decisions on schedule and deliverables.",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 39,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The ideal Scrum team size is between 5 and 8 people. •Teams have to tackle diverse tasks and so usually require people with different skills, such as networking, user experience, database design and so on. •They usually involve people with different levels of experience.•A team of 5-8 people is large enough to be diverse yet small enough to communicate informally and effectively and to agree on the priorities of the team.•The advantage of a self-organizing team is that it can be a cohesive team that can adapt to change. •Because the team rather than individuals take responsibility for the work, they can cope with people leaving and joining the team. •Good team communication means that team members inevitably learn something about each other’s areasTeam size and composition\n\u000040",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 40,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The developers of Scrum assumed that teams would be co-located. They would work in the same room and could communicate informally. •Daily scrums mean that the team members know what’s been done and what others are doing.  •However, the use of daily scrums as a coordination mechanism is based on two assumptions that are not always correct:•Scrum assumes that the team will be made up of full-time workers who share a workspace. In reality, team members may be part-time and may work in different places. For a student project team, the team members may take different classes at different times.•Scrum assumes that all team members can attend a morning meeting to coordinate the work for the day. However, some team members may work ﬂexible hours (e.g. because of childcare responsibilities) or may work on several projects at the same time.Team coordination\n\u000041",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 41,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•External interactions are interactions that team members have with people outside of the team. •In Scrum, the idea is that developers should focus on development and only the ScrumMaster and Product Owner should be involved in external interactions.•The intention is that the team should be able to work on software development without external interference or distractions.External interactions\n\u000042",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 42,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.10 Managing external interactions\n\u000043External interactions\nScrumMasterProduct ownerFigure 2.10 Managing external interactions\nProduct-focusedexternal interactionsTeam-focusedexternal interactions",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 43,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In all but the smallest product development companies, there is a need for development teams to report on progress to company management.• A self-organizing team has to appoint someone to take on these responsibilities. •Because of the need to maintain continuity of communication with people outside of the group, rotating these activities around team members is not a viable approach.•The developers of Scrum did not envisage that the ScrumMaster should also have project management responsibilities. •In many companies, however, the ScrumMaster has to take on project management responsibilities.•They know the work going on and are in the best position to provide accurate information and project plans and progress.Project management\n\u000044",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 44,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.11 Project management responsibilities\n\u000045ProjectmanagementReporting\nAdministrationFigure 2.11 Project management responsibilitiesBudgetScheduleRisksProblemsProgress\nFinanceComplianceProcurementLiaisonVacationsAbsenceWork qualityReviewingHiringPeople",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 45,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The best way to develop software products is to use agile software engineering methods that are geared to rapid product development and delivery.•Agile methods are based around iterative development and the minimization of overheads during the development process.•Extreme programming (XP) is an inﬂuential agile method that introduced agile development practices such as user stories, test-ﬁrst development and continuous integration. These are now mainstream software development activities.•Scrum is an agile method that focuses on agile planning and management. Unlike XP, it does not deﬁne the engineering practices to be used. The development team may use any technical practices that they believe are appropriate for the product being developed.•In Scrum, work to be done is maintained in a product backlog – a list of work items to be completed. Each increment of the software implements some of the work items from the product backlog.Key points 1\n\u000046",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 46,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Sprints are ﬁxed-time activities (usually 2–4 weeks) where a product increment is developed. Increments should be ‘potentially shippable’ i.e. they should not need further work before they are delivered.•A self-organizing team is a development team that organizes the work to be done by discussion and agreement amongst team members.•Scrum practices such as the product backlog, sprints and self-organizing teams can be used in any agile development process, even if other aspects of Scrum are not used.Key points 2\n\u000047",
+    "metadata": {
+      "deck_id": 12,
+      "slide_id": 26,
+      "page_number": 47,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018Agile Software Engineering",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 1,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Software products must be brought to market quickly so rapid software development and delivery is essential.•Virtually all software products are now developed using an agile approach.•Agile software engineering focuses on delivering functionality quickly, responding to changing product speciﬁcations and minimizing development overheads. •A large number of ‘agile methods’ have been developed. •There is no ‘best’ agile method or technique.•It depends on who is using the technique, the development team and the type of product being developedAgile software engineering\n\u00002",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 2,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Plan-driven development evolved to support the engineering of large, long-lifetime systems (such as aircraft control systems) where teams may be geographically dispersed and work on the software for several years.•This approach is based on controlled and rigorous software development processes that include detailed project planning, requirements speciﬁcation and analysis and system modelling.•However, plan-driven development involves signiﬁcant overheads and documentation and it does not support the rapid development and delivery of software.•Agile methods were developed in the 1990s to address this problem. •These methods focus on the software rather than its documentation, develop software in a series of increments and aim to reduce process bureaucracy as much as possible.Agile methods\n\u00003",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 3,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringWe are uncovering better ways of developing software by doing it and helping others to do it. Through this work, we have come to value:- individuals and interactions over processes and tools;- working software over comprehensive documentation;- customer collaboration over contract negotiation;- responding to change over following a plan.While there is value on the items on the right, we value the items on the left more.Table 2.1 The agile manifesto\n\u00004",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 4,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•All agile methods are based around incremental development and delivery. •Product development focuses on the software features, where a feature does something for the software user.•With incremental development, you start by prioritizing the features so that the most important features are implemented ﬁrst. •You only deﬁne the details of the feature being implemented in an increment. •That feature is then implemented and delivered. •Users or surrogate users can try it out and provide feedback to the development team. You then go on to deﬁne and implement the next feature of the system.Incremental development\n\u00005",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 5,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.1 Incremental development\n\u00006Figure 2.1 Incremental developmentProduct feature listIf all features are complete, deliver system releaseChoose features to be included in incrementRefine feature descriptionsDeliver system incrementIntegrate feature into systemImplement andtest feature",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 6,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringChoose features to be included in an increment Using the list of features in the planned product, select those features that can be implemented in the next product increment.Reﬁne feature descriptions Add detail to the feature descriptions so that the team have a common understanding of each feature and there is sufﬁcient detail to begin implementation.Implement and test Implement the feature and develop automated tests for that feature that show that its behaviour is consistent with its description.  Integrate feature and test Integrate the developed feature with the existing system and test it to check that it works in conjunction with other features.Deliver system increment Deliver the system increment to the customer or product manager for checking and comments. If enough features have been implemented, release a version of the system for customer use.Table 2.2 Incremental development activities\n\u00007",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 7,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringInvolve the customer Involve customers closely with the software development team. Their role is to provide and prioritize new system requirements and to evaluate each increment of the system. Embrace change Expect the features of the product and the details of these features to change as the development team and the product manager learn more about it. Adapt the software to cope with changes as they are made.Develop and deliver incrementally Always develop software products in increments. Test and evaluate each increment as it is developed and feed back required changes to the development team.   Table 2.3 Agile development principles\n\u00008",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 8,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringMaintain simplicity Focus on simplicity in both the software being developed and in the development process. Wherever possible, do what you can to eliminate complexity from the system.Focus on people, not things Trust the development team and do not expect everyone to always do the development process in the same way. Team members should be left to develop their own ways of working without being limited by prescriptive software processes.Table 2.3 Agile development principles\n\u00009",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 9,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The most inﬂuential work that has changed software development culture was the development of Extreme Programming (XP). •The name was coined by Kent Beck in 1998 because the approach was developed by pushing recognized good practice, such as iterative development, to ‘extreme’ levels.•Extreme programming focused on 12 new development techniques that were geared to rapid, incremental software development, change and delivery.•Some of these techniques are now widely used; others have been less popular.•The most widely used XP techniques (highlighted in red on the following slide) are explained elsewhere in the book.Extreme programming\n\u000010",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 10,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.2 Extreme programming practices\n\u000011Test-firstdevelopmentRefactoring\nPair programmingSimpledesignOn-sitecustomerSustainablepaceContinuousintegrationSmallreleasesIncrementalplanningCollectiveownershipExtremeprogrammingFigure 2.2 Extreme programming practices",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 11,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringIncremental planning/user stories There is no ‘grand plan’ for the system. Instead, what needs to be implemented (the requirements) in each increment are established in discussions with a customer representative. The requirements are written as user stories. The stories to be included in a release are determined by the time available and their relative priority. Small releases The minimal useful set of functionality that provides business value is developed ﬁrst. Releases of the system are frequent and incrementally add functionality to the previous release.Test-driven development  Instead of writing code then tests for that code, developers write the tests ﬁrst. This helps clarify what the code should actually do and that there is always a ‘tested’ version of the code available. An automated unit test framework is used to run the tests after every change. New code should not ‘break’ code that has already been implemented.Table 2.4 Widely adopted XP practices\n\u000012",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 12,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringContinuous integration As soon as the work on a task is complete, it is integrated into the whole system and a new version of the system is created. All unit tests from all developers are run automatically and must be successful before the new version of the system is accepted.Refactoring Refactoring means improving the structure, readability, efﬁciency and security of a program. All developers are expected to refactor the code as soon as potential code improvements are found. This keeps the code simple and maintainable.Table 2.4 Widely adopted XP practices\n\u000013",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 13,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Software company managers need information that will help them understand how much it costs to develop a software product, how long it will take and when the product can be brought to market.•Plan-driven development provides this information through long-term development plans that identify deliverables - items the team will deliver and when these will be delivered.•Plans always change so anything apart from short-term plans are unreliable.•Scrum is an agile method that provides a framework for agile project organization and planning. It does not mandate any speciﬁc technical practices. Scrum\n\u000014",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 14,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringProduct The software product that is being developed by the Scrum team.Product owner A team member who is responsible for identifying product features and attributes. They review work done and help to test the product.Product backlog A to-do list of items such as bugs, features and product improvements that the Scrum team have not yet completed.Development team A small self-organising team of ﬁve to eight people who are responsible for developing the product.Sprint  A short period, typically two to four weeks, when a product increment is developed.Table 2.5 Scrum terminology\n\u000015",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 15,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringScrum A daily team meeting where progress is reviewed and work to be done that day as discussed and agreed.ScrumMaster A team coach who guides the team in the effective use of Scrum.Potentially shippable product increment The output of a sprint which should be of high enough quality to be deployed for customer use.Velocity An estimate of how much work a team can do in a single sprint.Table 2.5 Scrum terminology\n\u000016",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 16,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The Product Owner is responsible for ensuring that the development team are always focused on the product they are building rather than diverted into technically interesting but less relevant work. •In product development, the product manager should normally take on the Product Owner role.   •The ScrumMaster is a Scrum expert whose job is to guide the team in the effective use of the Scrum method. The developers of Scrum emphasize that the ScrumMaster is not a conventional project manager but is a coach for the team. They have authority within the team on how Scrum is used. •In many companies that use Scrum, the ScrumMaster also has some project management responsibilities.Key roles in Scrum\n\u000017",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 17,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In Scrum, software is developed in sprints, which are ﬁxed-length periods (2 - 4 weeks) in which software features are developed and delivered.•During a sprint, the team has daily meetings (Scrums) to review progress and to update the list of work items that are incomplete.•Sprints should produce a ‘shippable product increment’. This means that the developed software should be complete and ready to deploy.Scrum and sprints\n\u000018",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 18,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.3 Scrum cycles\n\u000019ScrumDevelopsoftwareTestsoftwareSelect itemsto implementPlansprintSprintReviewsprintReview product backlogFigure 2.3. Scrum cycles\nProductbacklogShippableproduct incrementSprintbacklogStart",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 19,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.4 The top ﬁve beneﬁts of using Scrum\n\u000020Product\nProgressPeopleUnstable requirements do not hold up progress.The product is broken down into a set of understandable chunks that stakeholders can relate to.\nCustomers see on-time delivery of increments and gain feedback on how the product works. Team communication is improved because everyone can see  everything.ScrumbenefitsFigure 2.4 The top-five benefits of using Scrum\nTrust between customers and developers is established and a positive culture is created.",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 20,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Product backlog This is a to-do list of items to be implemented that is reviewed and updated before each sprint.•Timeboxed sprints Fixed-time (2-4 week) periods in which items from the product backlog are implemented,•Self-organizing teams Self-organizing teams make their own decisions and work by discussing issues and making decisions by consensus. Key Scrum practices\n\u000021",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 21,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The product backlog is a list of what needs to be done to complete the development of the product. •The items on this list are called product backlog items (PBIs). •The product backlog may include a variety of different items such as product features to be implemented, user requests, essential development activities and desirable engineering improvements.  •The product backlog should always be prioritized so that the items that be implemented ﬁrst are at the top of the list.  Product backlogs\n\u000022",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 22,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering1.  As a teacher, I want to be able to conﬁgure the group of tools that are available to individual classes. (feature)2.  As a parent, I want to be able to view my childrens’ work and the assessments made by their teachers. (feature)3.  As a teacher of young children, I want a pictorial interface for children with limited reading ability. (user request)4. Establish criteria for the assessment of open source software that might be used as a basis for parts of this system. (development activity)5.  Refactor user interface code to improve understandability and performance. (engineering improvement)6.  Implement encryption for all personal user data. (engineering improvement)Table 2.6 Examples of product backlog items\n\u000023",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 23,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringReady for consideration These are high-level ideas and feature descriptions that will be considered for inclusion in the product. They are tentative so may radically change or may not be included in the ﬁnal product.Ready for reﬁnement The team has agreed that this is an important item that should be implemented as part of the current development. There is a reasonably clear deﬁnition of what is required. However, work is needed to understand and reﬁne the item.Ready for implementation The PBI has enough detail for the team to estimate the effort involved and to implement the item. Dependencies on other items have been identiﬁed.Table 2.7 Product backlog item states\n\u000024",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 24,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.5 Product backlog activities\n\u000025Figure 2.5 Product backlog activitiesPRODUCT BACKLOG\nCreationRefinementEstimationPBI 1PBI 2PBI 3PBI 5PBI 4PBI 4PBI 1.1PBI 1.2PBI 3EPBI 2EPrioritizationCreationPBI 6PBI 5REVISEDPRODUCT BACKLOG",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 25,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Reﬁnement  Existing PBIs are analysed and reﬁned to create more detailed PBIs. This may lead to the creation of new product backlog items.•Estimation The team estimate the amount of work required to implement a PBI and add this assessment to each analysed PBI.•Creation  New items are added to the backlog. These may be new features suggested by the product manager, required feature changes, engineering improvements, or process activities such as the assessment of development tools that might be used.•Prioritization The product backlog items are reordered to take new information and changed circumstances into account.•Product backlog activities\n\u000026",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 26,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Effort required•This may be expressed in person-hours or person-days i.e. the number of hours or days it would take one person to implement that PBI. This is not the same as calendar time. Several people may work on an item, which may shorten the calendar time required.  •Story points•Story points are an arbitrary estimate of the effort involved in implementing a PBI, taking into account the size of the task, its complexity, the technology that may be required and the ‘unknown’ characteristics of the work. •They were derived originally by comparing user stories, but they can be used for estimating any kind of PBI. •Story points are estimated relatively. The team agree on the story points for a baseline task and other tasks are estimated by comparison with this e.g. more/less complex, larger/smaller etc.  PBI estimation metrics\n\u000027",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 27,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Products are developed in a series of sprints, each of which delivers an increment of the product or supporting software. •Sprints are short duration activities (1-4 weeks) and take place between a deﬁned start and end date. Sprints are timeboxed, which means that development stops at the end of a sprint whether or not the work has been completed.•During a sprint, the team work on the items from the product backlog.Timeboxed sprints\n\u000028",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 28,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.6 Beneﬁts of using timeboxed sprints\n\u000029Demonstrable progress\nProblem discoveryWork planningThere is a tangible output (usually a software demonstrator) that can be delivered at the end of every sprint. \nIf errors and omissions are discovered the rework required is limited to the duration of a sprint.The team develops an understand-ing of how much work they can do in a fixed time period. Time-boxingbenefitsFigure 2.6 Benefits of using timeboxed sprints",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 29,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Sprint planning  Work items to be completed in that sprint are selected and, if necessary, reﬁned to create a sprint backlog. This should not last more than a day at the beginning of the sprint.•Sprint execution The team work to implement the sprint backlog items that have been chosen for that sprint. If it is impossible to complete all of the sprint backlog items, the sprint is not extended. The unﬁnished items are returned to the product backlog and queued for a future sprint.•Sprint reviewing The work done in the sprint is reviewed by the team and (possibly) external stakeholders. The team reﬂect on what went well and what went wrong during the sprint with a view to improving their work process.Sprint activities\n\u000030",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 30,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.7 Sprint activities\n\u000031Sprint planningSprint reviewSprint backlogFigure 2.7 Sprint activities\nScrumDevelopsoftwareIntegrateSprint executionSprint backlog",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 31,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering• Establish an agreed sprint goal•Sprint goals may be focused on software functionality, support or performance and reliability,.•Decide on the list of items from the product backlog that should be implemented•Create a sprint backlog. •This is a more detailed version of the product backlog that records the work to be done during the sprintSprint planning\n\u000032",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 32,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.8 Sprint goals\n\u000033Functional\nSupportPerformance and reliabilityImplement user roles so that a user can select their role when they login to the system\nDevelop analytics that maintain information about the time users spend using each feature of the system.Ensure that the login response time is less than 10 seconds for all users where there are up to 2000 simultaneous login connections.SprintgoalsFigure 2.8 Sprint goals",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 33,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In a sprint plan, the team decides which items in the product backlog should be implemented during that sprint.•Key inputs are the effort estimates associated with PBIs and the team’s velocity•The output of the sprint planning process is a sprint backlog.•The sprint backlog is a breakdown of PBIs to show the what is involved in implementing the PBIs chosen for that sprint.•During a sprint, the team have daily meetings (scrums) to coordinate their work.Sprint planning\n\u000034",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 34,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringA scrum is a short, daily meeting that is usually held at the beginning of the day. During a scrum, all team members share information, describe their progress since the previous day’s scrum, problems that have arisen and plans for the coming day. This means that everyone on the team knows what is going on and, if problems arise, can re-plan short-term work to cope with them.  Scrum meetings should be short and focused. To dissuade team members from getting involved in long discussions, they are sometimes organized as ‘stand-up’ meetings where there are no chairs in the meeting room.During a scrum, the sprint backlog is reviewed. Completed items are removed from it. New items may be added to the backlog as new information emerges. The team then decide who should work on sprint backlog items that day.Table 2.8 Scrums\n\u000035",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 35,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Scrum does not suggest the technical agile activities that should be used. However, I think there are two practices that should always be used in a sprint.•Test automation As far as possible, product testing should be automated. You should develop a suite of executable tests that can be run at any time.  •Continuous integration Whenever anyone makes changes to the software components they are developing, these components should be immediately integrated with other components to create a system. This system should then be tested to check for unanticipated component interaction problems. Agile activities\n\u000036",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 36,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringReviewed The code has been reviewed by another team member who has checked that it meets agreed coding standards, is understandable, includes appropriate comments, and has been refactored if necessary.Unit tested All unit tests have been run automatically and all tests have executed  successfully.Integrated The code has been integrated with the project codebase and no integration errors have been reported.Integration tested All integration tests have been run automatically and all tests have executed successfully.Accepted Acceptance tests have been run if appropriate and the product owner or the development team have conﬁrmed that the product backlog item has been completed. Table 2.9 Code completeness checklist\n\u000037",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 37,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•At the end of each sprint, there is a review meeting, which involves the whole team. This meeting:•reviews whether or not the sprint has met its goal. •sets out any new problems and issues that have emerged during the sprint.•is a way for a team to reﬂect on how they can improve the way they work. •The product owner has the ultimate authority to decide whether or not the goal of the print has been achieved. They should conﬁrm that the implementation of the selected product backlog items is complete. •The sprint review should include a process review, in which the team reﬂects on its own way of working and how Scrum has been used.  •The aim is to identify ways to improve and to discuss how to use Scrum more productively. Sprint reviews\n\u000038",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 38,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.9 Self-organizing teams\n\u000039Self-organizingteamFigure 2.9 Self-organizing teamscoordinates the work of the team members by discussing tasks andreaching a consensus onwho should do what.limits the involvement of engineers in external interactions with management and customers.makes its own decisions on schedule and deliverables.",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 39,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The ideal Scrum team size is between 5 and 8 people. •Teams have to tackle diverse tasks and so usually require people with different skills, such as networking, user experience, database design and so on. •They usually involve people with different levels of experience.•A team of 5-8 people is large enough to be diverse yet small enough to communicate informally and effectively and to agree on the priorities of the team.•The advantage of a self-organizing team is that it can be a cohesive team that can adapt to change. •Because the team rather than individuals take responsibility for the work, they can cope with people leaving and joining the team. •Good team communication means that team members inevitably learn something about each other’s areasTeam size and composition\n\u000040",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 40,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The developers of Scrum assumed that teams would be co-located. They would work in the same room and could communicate informally. •Daily scrums mean that the team members know what’s been done and what others are doing.  •However, the use of daily scrums as a coordination mechanism is based on two assumptions that are not always correct:•Scrum assumes that the team will be made up of full-time workers who share a workspace. In reality, team members may be part-time and may work in different places. For a student project team, the team members may take different classes at different times.•Scrum assumes that all team members can attend a morning meeting to coordinate the work for the day. However, some team members may work ﬂexible hours (e.g. because of childcare responsibilities) or may work on several projects at the same time.Team coordination\n\u000041",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 41,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•External interactions are interactions that team members have with people outside of the team. •In Scrum, the idea is that developers should focus on development and only the ScrumMaster and Product Owner should be involved in external interactions.•The intention is that the team should be able to work on software development without external interference or distractions.External interactions\n\u000042",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 42,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.10 Managing external interactions\n\u000043External interactions\nScrumMasterProduct ownerFigure 2.10 Managing external interactions\nProduct-focusedexternal interactionsTeam-focusedexternal interactions",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 43,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•In all but the smallest product development companies, there is a need for development teams to report on progress to company management.• A self-organizing team has to appoint someone to take on these responsibilities. •Because of the need to maintain continuity of communication with people outside of the group, rotating these activities around team members is not a viable approach.•The developers of Scrum did not envisage that the ScrumMaster should also have project management responsibilities. •In many companies, however, the ScrumMaster has to take on project management responsibilities.•They know the work going on and are in the best position to provide accurate information and project plans and progress.Project management\n\u000044",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 44,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software EngineeringFigure 2.11 Project management responsibilities\n\u000045ProjectmanagementReporting\nAdministrationFigure 2.11 Project management responsibilitiesBudgetScheduleRisksProblemsProgress\nFinanceComplianceProcurementLiaisonVacationsAbsenceWork qualityReviewingHiringPeople",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 45,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•The best way to develop software products is to use agile software engineering methods that are geared to rapid product development and delivery.•Agile methods are based around iterative development and the minimization of overheads during the development process.•Extreme programming (XP) is an inﬂuential agile method that introduced agile development practices such as user stories, test-ﬁrst development and continuous integration. These are now mainstream software development activities.•Scrum is an agile method that focuses on agile planning and management. Unlike XP, it does not deﬁne the engineering practices to be used. The development team may use any technical practices that they believe are appropriate for the product being developed.•In Scrum, work to be done is maintained in a product backlog – a list of work items to be completed. Each increment of the software implements some of the work items from the product backlog.Key points 1\n\u000046",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 46,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
+    }
+  },
+  {
+    "content": "© Ian Sommerville 2018:Agile Software Engineering•Sprints are ﬁxed-time activities (usually 2–4 weeks) where a product increment is developed. Increments should be ‘potentially shippable’ i.e. they should not need further work before they are delivered.•A self-organizing team is a development team that organizes the work to be done by discussion and agreement amongst team members.•Scrum practices such as the product backlog, sprints and self-organizing teams can be used in any agile development process, even if other aspects of Scrum are not used.Key points 2\n\u000047",
+    "metadata": {
+      "deck_id": 13,
+      "slide_id": 27,
+      "page_number": 47,
+      "title": "2. Agile Software Engineering.pdf",
+      "file_path": "C:/Users/dell/Downloads/Ian Slides/LECTURES/2. Agile Software Engineering.pdf"
     }
   }
 ]
