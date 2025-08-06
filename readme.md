@@ -21,7 +21,7 @@ Follow these steps to clone and run the project on your machine.
 
 ```bash
 git clone https://github.com/haibayby2002/sft.git
-cd slide-fight-tactics
+cd sft
 ```
 
 ### 2. Set Up Python Virtual Environment (If not already installed)
