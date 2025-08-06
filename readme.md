@@ -1,6 +1,7 @@
 # Slide Fight Tactics 🧠📚
 
 Slide Fight Tactics is a local-first, AI-powered slide deck assistant. Create decks, import PDF slides, and ask questions with natural language. Answers are retrieved from your slides with referenced page and slide information using Gemma 3n (via Ollama).
+
 ![Slide Fight Tactics UI](./ui_preview.png)
 ---
 
