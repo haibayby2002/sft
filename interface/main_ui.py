@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, scrolledtext, simpledialog, messagebox
-
+from interface.simple_markdown_text import SimpleMarkdownText
 from application.query_controller import load_decks
 import os
 from tkinter import filedialog
@@ -26,6 +26,39 @@ embedder = Embedder()
 vectordb = VectorDB()
 
 
+
+
+
+import tkinter as tk
+# import tkinter.scrolledtext as tkscroll
+
+
+import re
+
+def render_rich_text(text_widget, raw_text):
+    text_widget.insert("end", "\n")  # Start with a newline
+
+    # Configure tags once
+    text_widget.tag_config("bold", font=("Helvetica", 10, "bold"))
+    text_widget.tag_config("page", foreground="gray")
+
+    # Tokenize by bold (**text**) and page refs (page 7)
+    parts = re.split(r'(\*\*.*?\*\*|\(page \d+\))', raw_text)
+
+    for part in parts:
+        if part.startswith("**") and part.endswith("**"):
+            content = part[2:-2]
+            start = text_widget.index("end")
+            text_widget.insert("end", content)
+            end = text_widget.index("end")
+            text_widget.tag_add("bold", start, end)
+        elif re.match(r'\(page \d+\)', part):
+            start = text_widget.index("end")
+            text_widget.insert("end", part)
+            end = text_widget.index("end")
+            text_widget.tag_add("page", start, end)
+        else:
+            text_widget.insert("end", part)
 
 
 from PIL import Image, ImageTk
@@ -538,7 +571,8 @@ def launch_ui():
     chat_frame = tk.LabelFrame(content_area, text="Chat History")
     chat_frame.pack(fill="both", expand=True, padx=10, pady=5)
 
-    chat_log = scrolledtext.ScrolledText(chat_frame, wrap=tk.WORD, height=10)
+    # chat_log = scrolledtext.ScrolledText(chat_frame, wrap=tk.WORD, height=10)
+    chat_log = SimpleMarkdownText(chat_frame, wrap="word", height=10)
     chat_log.pack(fill="both", expand=True, padx=5, pady=5)
     chat_log.insert(tk.END, "Gemma: Welcome! Ask me about your slides...\n")
 
@@ -633,7 +667,8 @@ If you use any part of the context in your answer, cite the full title name of t
 {context_text}"""
 
                 for chunk in query_gemma_stream(prompt=prompt):
-                    chat_log.insert(tk.END, chunk)
+                    # chat_log.insert(tk.END, chunk)
+                    chat_log.insert_markdown_stream(chunk)
                     chat_log.see(tk.END)
 
             except Exception as e:
